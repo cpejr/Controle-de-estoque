@@ -19,15 +19,17 @@ export default function Routes(){
                 <Route path="/" exact component={Login} />
                 <Fragment>
                     <Header/>
-                    <div style={{display: "flex", height: '100%'}}>
+                    <div style={{display: "flex", height: '85%'}}>
                         <SideBar/>
-                        <Route path="/perfil" component={Perfil} />
-                        <Route path="/listaDeprodutos" component={ListaDeProdutos} />
-                        <Route path="/produto" component={Produto} />
-                        <Route path="/ListaDeUsuarios" component={ListaDeUsuarios} />
-                        <Route path="/usuario" component={Usuario} />
-                        <Route path="/novoUsuario" component={NovoUsuario} />
-                        <Route path="/ajuda" component={Ajuda} />
+                        <div style={{width: '100%', backgroundColor: '#EBEAE9'}}>
+                            <Route path="/perfil" component={Perfil} />
+                            <Route path="/listaDeprodutos" component={ListaDeProdutos} />
+                            <Route path="/produto" component={Produto} />
+                            <Route path="/ListaDeUsuarios" component={ListaDeUsuarios} />
+                            <Route path="/usuario" component={Usuario} />
+                            <Route path="/novoUsuario" component={NovoUsuario} />
+                            <Route path="/ajuda" component={Ajuda} />
+                        </div>
                     </div>
                 </Fragment>
             </Switch>
