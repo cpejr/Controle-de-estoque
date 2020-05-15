@@ -6,6 +6,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Typography from '@material-ui/core/Typography';
 
 import { IconContext } from "react-icons";
 import { FaUser, FaUsers, FaUserPlus } from "react-icons/fa";
@@ -26,7 +27,7 @@ export default function SideBar(){
                         <FaUser />
                     </IconContext.Provider>
                     </ListItemIcon>
-                    <ListItemText primary={"CLARISSE LISPECTOR"} />
+                    <ListItemText primary={<Typography style={styles.optionText}>CLARISSE LINSPECTOR</Typography>}/>
                 </ListItem>
 
                 <ListItem button onClick={()=>{
@@ -38,7 +39,7 @@ export default function SideBar(){
                                 <TiThList />
                             </IconContext.Provider>
                         </ListItemIcon>
-                        <ListItemText primary={"LISTA DE PRODUTOS"} />
+                        <ListItemText primary={<Typography style={styles.optionText}>LISTA DE PRODUTOS</Typography>} />
                 </ListItem>
 
                 <ListItem button onClick={()=>{
@@ -50,7 +51,7 @@ export default function SideBar(){
                             <FaUsers />
                         </IconContext.Provider>
                     </ListItemIcon>
-                    <ListItemText primary={"LISTA DE USUÁRIOS"} />
+                    <ListItemText primary={<Typography style={styles.optionText}>LISTA DE USUÁRIOS</Typography>} />
                 </ListItem>
 
                 <ListItem button onClick={()=>{
@@ -62,7 +63,7 @@ export default function SideBar(){
                             <FaUserPlus />
                         </IconContext.Provider>
                     </ListItemIcon>
-                    <ListItemText primary={"NOVO USUÁRIO"} />
+                    <ListItemText primary={<Typography style={styles.optionText}>NOVO USUÁRIO</Typography>} />
                 </ListItem>
 
             </List>
