@@ -1,3 +1,4 @@
+import {azulPadrao, fonteCinzaEscuro, brancoPadrao} from '../../StylePadrao/stylePadrao'
 
 const styles = {
 
@@ -30,12 +31,12 @@ const styles = {
         marginLeft: '10%',
         marginBottom: '7%',
         border: '1px solid #707070',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: brancoPadrao,
         height: '12%',
         width: '70%',
         fontSize: '120%',
         fontFamily: 'Oswald',
-        color: '#707070',
+        color: fonteCinzaEscuro,
         paddingLeft: '2%',
     }, 
 
@@ -56,7 +57,7 @@ const styles = {
 
     handMadeRadio: {
         border: '1px solid #707070',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: brancoPadrao,
         height: '33%',
         width: '60%',
         cursor: 'pointer',
@@ -78,12 +79,12 @@ const styles = {
         width: '2vh',
         borderRadius: '50%',
         border: '1px solid black',
-        backgroundColor: '#043741',
+        backgroundColor: azulPadrao,
     },
 
     sendButton: {
         marginTop: '10%',
-        backgroundColor: '#043741',
+        backgroundColor: azulPadrao,
         padding: '1%',
         paddingLeft: '8%',
         paddingRight: '8%',

@@ -39,7 +39,7 @@ export default function NovoUsuario(){
                         </div>
                         <div placeholder='CONFIRME A SENHA' style={styles.handMadeRadio} onClick={()=>{setUsertype('Employee')}}>
                             {userType==='Employee' ? <div style={styles.filledCircle}/> : <div style={styles.emptyCircle}/>}
-                            FUNCINÁRIO
+                            FUNCIONÁRIO
                         </div>
                     </div>
                     <div style={styles.sendButton} onClick={handleSubmit}>CRIAR</div>
