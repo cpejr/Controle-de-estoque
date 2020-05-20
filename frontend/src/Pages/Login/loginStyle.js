@@ -1,4 +1,4 @@
-import {azulPadrao, fonteCinzaEscuro, brancoPadrao} from '../../StylePadrao/stylePadrao'
+import {azulPadrao, fontCinzaEscuro, brancoPadrao, fontPadrao, fontSizeButton} from '../../StylePadrao/stylePadrao'
 const styles = {
     container:{
         height: '100%',
@@ -22,8 +22,8 @@ const styles = {
         height: '10%',
         width: '25%',
         fontSize: '120%',
-        fontFamily: 'Oswald',
-        color: fonteCinzaEscuro,
+        fontFamily: fontPadrao,
+        color: fontCinzaEscuro,
         paddingLeft: '2%',
         alignItems: 'center'
     },
@@ -35,7 +35,7 @@ const styles = {
 
     typoStyle:{
         color: brancoPadrao,
-        fontFamily: 'Oswald',
+        fontFamily: fontPadrao,
         fontSize: '120%',
         alignItems:"left"
     },
@@ -46,8 +46,8 @@ const styles = {
         backgroundColor: brancoPadrao,
         height: '7%',
         width: '10%',
-        fontSize: '120%',
-        fontFamily: 'Oswald',
+        fontSize: fontSizeButton,
+        fontFamily: fontPadrao,
         color: azulPadrao,
         alignItems: 'center',
 

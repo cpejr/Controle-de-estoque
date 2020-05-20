@@ -1,4 +1,4 @@
-import {azulPadrao, fonteCinzaEscuro, brancoPadrao} from '../../StylePadrao/stylePadrao'
+import {azulPadrao, fontCinzaEscuro, brancoPadrao, fontPadrao} from '../../StylePadrao/stylePadrao'
 
 const styles = {
 
@@ -35,8 +35,8 @@ const styles = {
         height: '12%',
         width: '70%',
         fontSize: '120%',
-        fontFamily: 'Oswald',
-        color: fonteCinzaEscuro,
+        fontFamily: fontPadrao,
+        color: fontCinzaEscuro,
         paddingLeft: '2%',
     }, 
 
