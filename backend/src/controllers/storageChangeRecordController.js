@@ -1,30 +1,30 @@
 const connection = require('../database/connection');
 
 module.exports = {
-    // async create(req, res){
-    //     const {
-    //         userName,
-    //         userType,
-    //         userCPF,
-    //         userDate,
-    //         password
-    //     } = req.body;
+    async create(req, res){
+        const {
+            product_id,
+            product_name,
+            product_amount,
+            user_name,
+            lastChange_date
+        } = req.body;
     
-    //     await connection('userData').insert({
-    //         userName,
-    //         userType,
-    //         userCPF,
-    //         userDate,
-    //         password
-    //     });
+        await connection('storageChangeRecord').insert({
+            product_id,
+            product_name,
+            product_amount,
+            user_name,
+            lastChange_date
+        });
         
-    //     console.log(userName);
-    //     return res.json({password});
-    // },
+        console.log(product_id);
+        return res.json({lastChange_date});
+    },
 
     async index(req,res){
-        const storage_change_record = await connection('storageChangeRecord').select('*');
+        const storageChangeRecords = await connection('storageChangeRecord').select('*');
 
-        return res.json(storage_change_record);
+        return res.json(storageChangeRecords);
     },
 };
