@@ -23,6 +23,8 @@ module.exports = {
     },
 
     async index(req,res){
-        
+        const users = await connection('userData').select('*');
+
+        return res.json(users);
     },
 };
