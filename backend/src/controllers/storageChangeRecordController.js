@@ -27,4 +27,11 @@ module.exports = {
 
         return res.json(storageChangeRecords);
     },
+
+     async  get() {
+        return Promise.reject('Oops!').catch(err => {
+          throw new Error(err);
+        });
+      },
+      
 };
