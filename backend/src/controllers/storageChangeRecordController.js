@@ -3,23 +3,23 @@ const connection = require('../database/connection');
 module.exports = {
     async create(req, res){
         const {
-            product_id,
-            product_name,
-            product_amount,
-            user_name,
-            lastChange_date
+            // product_id,
+            // product_name,
+            // product_amount,
+            // user_name,
+            lastChanged_at
         } = req.body;
     
         await connection('storageChangeRecord').insert({
-            product_id,
-            product_name,
-            product_amount,
-            user_name,
-            lastChange_date
+            // product_id,
+            // product_name,
+            // product_amount,
+            // user_name,
+            lastChanged_at
         });
         
-        console.log(product_id);
-        return res.json({lastChange_date});
+        console.log("deu certo");
+        return res.json({lastChanged_at});
     },
 
     async index(req,res){
@@ -27,11 +27,5 @@ module.exports = {
 
         return res.json(storageChangeRecords);
     },
-
-     async  get() {
-        return Promise.reject('Oops!').catch(err => {
-          throw new Error(err);
-        });
-      },
       
 };

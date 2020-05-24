@@ -17,6 +17,9 @@ routes.post('/newUser', userController.create);
 routes.get('/listUser', userController.index);
 
 routes.get('/storageChangeRecord', storageChangeRecordController.index);
+routes.post('/storageChangeRecord', storageChangeRecordController.create);
+
+
 
 
 module.exports = routes;
