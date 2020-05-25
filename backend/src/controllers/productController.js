@@ -37,6 +37,27 @@ module.exports = {
     },
 
     async delete(req, res){
-        
+        const {id} = req.params;
+        // const userType = request.headers.authorization;
+
+        const product = await connection('product')
+        .where('id', id)
+        .select('id')
+        .first();
+
+        await connection('product').where('id', id).delete();
+
+        return res.status(204).send();//Status de sucesso
+    },
+
+    async search(req, res){
+        const {id} = req.params;
+
+        const product = await connection('product')
+        .where('id', id)
+        .select('id', 'name', 'type')
+        .first();
+
+        return res.json(product);
     },
 };
