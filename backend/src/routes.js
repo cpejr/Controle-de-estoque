@@ -3,6 +3,7 @@ const connection = require('./database/connection');
 const productController = require('./controllers/productController');
 const userController = require('./controllers/userController');
 const storageChangeRecordController = require('./controllers/storageChangeRecordController');
+const productListController = require('./controllers/productListController');
 const routes = express.Router();
 
 
@@ -20,6 +21,11 @@ routes.get('/listUser', userController.index);
 
 routes.get('/storageChangeRecord', storageChangeRecordController.index);
 routes.post('/storageChangeRecord', storageChangeRecordController.create);
+
+routes.delete('/productList/:productID', productListController.delete);
+routes.get('/productListSearch/:productID', productListController.search);
+routes.get('/productList', productListController.index);
+routes.post('/productList', productListController.create);
 
 
 
