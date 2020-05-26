@@ -14,8 +14,9 @@ const styles = {
       width: '80%',
       backgroundColor: brancoPadrao,
       display: 'flex',
-      flexDirection: 'row'
-
+      flexDirection: 'row',
+      alignItems: 'center',
+      border:'0.5px solid #707070',
     },
     fieldContainer:{
         display: 'flex',
@@ -30,7 +31,6 @@ const styles = {
         color: fontCinzaEscuro,
         fontFamily: fontPadrao,
         fontSize: '20px',
-        alignItems:"left",
         marginBottom: '1%'
     },
     inputField: {
@@ -49,22 +49,58 @@ const styles = {
     },
     buttonSearch: {
         borderRadius: '50px',
-        margin: '5%',
+        margin: '0% 0% 0% 20%',
         backgroundColor: azulPadrao,
-        height: '35%',
-        width: '18%',
+        height: '40%',
+        width: '15%',
         fontSize: fontSizeButton,
         fontFamily: fontPadrao,
         color: brancoPadrao,
         alignItems: 'center',
+        disabled: true
     },
 
 
+
     listContainer:{
-        height: '50%',
+        height: '60%',
         width: '80%',
         backgroundColor: brancoPadrao,
-        marginTop: '5%'
+        marginTop: '3%',
+        border:'0.5px solid #707070',
+    },
+    titleContainer:{
+        height: '20%',
+        width: '100%',
+        backgroundColor: '#D3D3D3',
+        border:'0.5px solid #707070',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    titleDiv:{
+        width: '20%',
+        borderRight: '0.2px solid #707070',
+        display: 'flex',
+        justifyContent: 'center',
+    },
+
+    productContainer:{
+        height: '20%',
+        width: '100%',
+        backgroundColor: brancoPadrao,
+        border:'0.5px solid #707070',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    productDiv:{
+        width: '20%',
+        display: 'flex',
+        justifyContent: 'center',
     },
 };
 export default styles;
