@@ -1,5 +1,4 @@
 const express = require('express');
-const connection = require('./database/connection');
 const productController = require('./controllers/productController');
 const userController = require('./controllers/userController');
 const storageChangeRecordController = require('./controllers/storageChangeRecordController');
@@ -18,6 +17,8 @@ routes.get('/search/:id', productController.search);
 
 routes.post('/newUser', userController.create);
 routes.get('/listUser', userController.index);
+routes.delete('/deleteUser/:userCPF', userController.delete);
+routes.get('/selectUser/:userCPF', userController.selectUser);
 
 routes.get('/storageChangeRecord', storageChangeRecordController.index);
 routes.post('/storageChangeRecord', storageChangeRecordController.create);
