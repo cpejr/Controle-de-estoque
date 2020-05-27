@@ -10,6 +10,7 @@ exports.up = function(knex) {
     table.decimal('lastBuyPrice').notNullable();
     table.integer('amount').notNullable();
     table.integer('allertAmount').notNullable();
+    table.text('description');
   });
 };
 
