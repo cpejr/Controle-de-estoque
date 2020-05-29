@@ -19,7 +19,7 @@ export default function Routes(){
                 <Route path="/" exact component={Login} />
                 <Fragment>
                     <Header/>
-                    <div style={{display: "flex", height: '85%'}}>
+                    <div style={{display: "flex", minHeight: '85%'}}>
                         <SideBar/>
                         <div style={{width: '100%', backgroundColor: '#EBEAE9'}}>
                             <Route path="/perfil" component={Perfil} />
