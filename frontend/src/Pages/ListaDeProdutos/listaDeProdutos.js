@@ -36,21 +36,19 @@ export default function ListaDeProdutos() {
         setSearchProductByName(e);
     }
 
-    function findProductByName(produtos, search) {
-        if(search.length > 0) {
+    function findProductByName() {
+        if(searchProductByName.length > 0) {
             let products = [];
-            produtos.map((item) => {
-                if (item.name === search) {
+            props.produtos.map((item) => {
+                if (item.name === searchProductByName) {
                     products.push(item);
                 }
             });
              setProductByName(products);
-            //return products;
         }
-        /*else{
-            //return '';
+        else{
             setProductByName('');
-        }*/
+        }
     }
 
     function findProductByType(produtos, search) {
@@ -80,7 +78,7 @@ export default function ListaDeProdutos() {
     }
 
     function renderProduct(produtos) {
-        if(produtos && produtos !== '' && produtos !== []) {
+        if(produtos !== '') {
             return (
                 produtos.map((item) => {
                     return (
@@ -118,7 +116,7 @@ export default function ListaDeProdutos() {
         else {
             return (
                 <Typography>
-                    Busque um item no estoque.
+                    Produto não encontrado no estoque.
                 </Typography>
             )
         }
@@ -148,14 +146,12 @@ export default function ListaDeProdutos() {
                         type='text'
                     />
                 </div>
-                <button style={styles.buttonSearch} onClick={console.log(searchProductByName)}>BUSCAR</button>
+                <button style={styles.buttonSearch} onClick={findProductByName}>BUSCAR</button>
             </div>
             <div style={styles.listContainer}>
                 <div style={styles.titleContainer}>
                     {renderColomnTitle()}
                 </div>
-
-                {/*findProductByName(props.produtos, searchProductByName)*/}
                 {renderProduct(productByName)}
 
             </div>
