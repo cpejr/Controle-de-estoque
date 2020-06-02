@@ -82,5 +82,86 @@ module.exports = {
         return res.json(user);
     },
 
-    
+
+//Metodo para editar o propio usuario
+async editinfo(req,res){
+    const {
+        userName,
+        userType,
+        userDate,
+        password
+    } = req.body;
+
+   console.log(        
+        userName,
+        userType,
+        userDate,
+        password)
+    const userCPF_Logado = req.headers.authorization;
+
+
+    const pass = await connection('userData')
+    .where('userCPF', userCPF_Logado)
+    .select('password')
+
+    console.log(pass);
+
+    const passS = `'${pass}'`;
+
+    console.log(passS);
+
+    const obj = JSON.parse(passS);
+
+    console.log(obj);
+    console.log(obj.password);
+
+    if ( obj.password === pass){
+        console.log("aaa");
+        const user = await connection('userData')
+        .where('userCPF', userCPF_Logado)
+        .update({
+            userName: userName,
+            userType: userType,
+            userDate: userDate,
+        })
+
+        return res.status(204).send(user);
+}
+
+},
+
+async editpass(req,res){
+    const {
+        password,
+        newpassword
+    } = req.body;
+
+    const userCPF_Logado = req.headers.authorization;
+
+    const pass = await connection('userData')
+    .where('userCPF', userCPF_Logado)
+    .select('password')
+    .first();
+
+    console.log(pass);
+
+    JSON.stringify(pass);
+
+    console.log(pass);
+
+    if(password === pass){
+        const user = await connection('userData')
+        .where('userCPF', userCPF_Logado)
+        .update({
+        password: newpassword
+        })
+
+        return res.status(204).send(user);
+}
+
+}
+
 };
+
+
+
