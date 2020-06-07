@@ -22,7 +22,7 @@ export default function Routes(){
                     <Header/>
                     <div style={{display: "flex", minHeight: '85%'}}>
                         <SideBar/>
-                        <div style={{minWidth: '100%', backgroundColor: '#EBEAE9'}}>
+                        <div style={{minWidth: '84%', backgroundColor: '#EBEAE9'}}>
                             <Route path="/perfil" component={Perfil} />
                             <Route path="/listaDeprodutos" component={ListaDeProdutos} />
                             <Route path="/produto" component={Produto} />

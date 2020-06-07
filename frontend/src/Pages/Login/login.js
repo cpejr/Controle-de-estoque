@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from './loginStyle';
-import { Typography } from '@material-ui/core';
+import { Typography, Button} from '@material-ui/core';
 
 
 export default function Login() {
@@ -65,7 +65,7 @@ export default function Login() {
                     onChange={(e)=>{setPassword(e.target.value)}}
                 />
 
-                <button style={styles.buttonLogin} onClick={handleSubmit}>LOGIN</button>
+                <Button style={styles.buttonLogin} onClick={handleSubmit}>LOGIN</Button>
 
 
             </div>

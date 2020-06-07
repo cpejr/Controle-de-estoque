@@ -1,4 +1,4 @@
-import {azulPadrao, brancoPadrao, fontCinzaEscuro, fontPadrao, fontSizeTitle, fontSizeButton} from "../../StylePadrao/stylePadrao";
+import {azulPadrao, brancoPadrao, fontCinzaEscuro, fontPadrao, fontSizeTitle, fontSizePadrao} from "../../StylePadrao/stylePadrao";
 
 const styles = {
     Container: {
@@ -81,7 +81,7 @@ const styles = {
         backgroundColor: azulPadrao,
         height: '90%',
         width: '10%',
-        fontSize: fontSizeButton,
+        fontSize: fontSizePadrao,
         fontFamily: fontPadrao,
         color: brancoPadrao,
         alignItems: 'center',

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from './listaDeProdutosStyle';
-import {Typography} from "@material-ui/core";
+import {Typography, Button} from "@material-ui/core";
+import Produto from "../Produto";
 
 export default function ListaDeProdutos() {
 
@@ -25,41 +26,62 @@ export default function ListaDeProdutos() {
         ]
     };
 
-    const [searchProductByName, setSearchProductByName] = useState('');
-    const [productByName, setProductByName] = useState(props.produtos);
+    const [searchProduct, setSearchProduct] = useState('');
+    const [searchProductBy, setSearchProductBy] = useState('produto');
+    const [products, setProduct] = useState(props.produtos);
+    const [productModal, setProductModal] = useState('');
+    const [open, setOpen] = useState(false);
 
-    function getProductByName() {
-        return productByName;
+    const handleOpen = (produto) => {
+        setOpen(true);
+        setProductModal(produto)
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    function onChangeInputSearch(e) {
+        setSearchProduct(e);
     }
 
-    function onChangeInputProduct(e) {
-        setSearchProductByName(e);
+    function onChangeSelectBy(e) {
+        setSearchProductBy(e);
     }
 
-    function findProductByName() {
-        if(searchProductByName.length > 0) {
-            let products = [];
-            props.produtos.map((item) => {
-                if (item.name === searchProductByName) {
-                    products.push(item);
-                }
-            });
-             setProductByName(products);
+    function findProduct() {
+        if(searchProduct.length > 0) {
+            if(searchProductBy === 'produto') {
+                let produtos = [];
+                props.produtos.map((item) => {
+                    if (item.name === searchProduct) {
+                        produtos.push(item);
+                    }
+                });
+                setProduct(produtos);
+            }
+            else if(searchProductBy === 'tipo'){
+                let produtos = [];
+                props.produtos.map((item) => {
+                    if (item.type === searchProduct) {
+                        produtos.push(item);
+                    }
+                });
+                setProduct(produtos);
+            }
+            else if(searchProductBy === 'id'){
+                let produtos = [];
+                props.produtos.map((item) => {
+                    if (item.id === searchProduct) {
+                        produtos.push(item);
+                    }
+                });
+                setProduct(produtos);
+            }
         }
         else{
-            setProductByName('');
+            setProduct(props.produtos);
         }
-    }
-
-    function findProductByType(produtos, search) {
-        let products = [];
-        produtos.map((item) =>{
-            if(item.type === search){
-                products.push(item);
-            }
-        });
-        return products;
-
     }
 
     function renderColomnTitle() {
@@ -74,15 +96,15 @@ export default function ListaDeProdutos() {
                 )
             })
         )
-
     }
 
     function renderProduct(produtos) {
-        if(produtos !== '') {
+        if(produtos.length !== 0) {
             return (
                 produtos.map((item) => {
                     return (
-                        <div style={styles.productContainer}>
+                        <div style={styles.productContainer}
+                             onClick={()=>{handleOpen(item)}}>
                             <div style={styles.productDiv}>
                                 <Typography style={styles.typoStyle}>
                                     {item.name}
@@ -128,33 +150,30 @@ export default function ListaDeProdutos() {
             <div style={styles.searchContainer}>
 
                 <div style={styles.fieldContainer}>
-                    <Typography style={styles.typoStyle}>
-                        PRODUTO
-                    </Typography>
                     <input
                         style={styles.inputField}
                         type='text'
-                        onChange={(e)=>onChangeInputProduct(e.target.value)}
+                        onChange={(e)=>onChangeInputSearch(e.target.value)}
+                        placeholder="Pesquisar"
                     />
                 </div>
                 <div style={styles.fieldContainer}>
-                    <Typography style={styles.typoStyle}>
-                        TIPO
-                    </Typography>
-                    <input
-                        style={styles.inputField}
-                        type='text'
-                    />
+                    <select name="select" style={styles.inputField} onChange={(e)=>onChangeSelectBy(e.target.value)}>
+                        <option value="produto" selected>PRODUTO</option>
+                        <option value="tipo" >TIPO</option>
+                        <option value="id">ID</option>
+                    </select>
                 </div>
-                <button style={styles.buttonSearch} onClick={findProductByName}>BUSCAR</button>
+                <Button style={styles.buttonSearch} onClick={findProduct}>BUSCAR</Button>
             </div>
             <div style={styles.listContainer}>
                 <div style={styles.titleContainer}>
                     {renderColomnTitle()}
                 </div>
-                {renderProduct(productByName)}
+                {renderProduct(products)}
 
             </div>
+            {open === true && (<Produto product={productModal} open={true} onClose={handleClose}/>)}
         </div>)
 
 }

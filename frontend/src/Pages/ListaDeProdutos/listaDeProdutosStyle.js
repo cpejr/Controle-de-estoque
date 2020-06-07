@@ -1,9 +1,8 @@
-import {azulPadrao, fontCinzaEscuro, brancoPadrao, fontPadrao, fontSizeButton, fontSizeTitle} from '../../StylePadrao/stylePadrao'
+import {azulPadrao, fontCinzaEscuro, brancoPadrao, fontPadrao, fontSizePadrao, fontSizeTitle} from '../../StylePadrao/stylePadrao'
 
 const styles = {
     container: {
         height: '100%',
-        width: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -30,7 +29,7 @@ const styles = {
     typoStyle:{
         color: fontCinzaEscuro,
         fontFamily: fontPadrao,
-        fontSize: '20px',
+        fontSize: '3.5vh',
         marginBottom: '1%'
     },
     inputField: {
@@ -41,7 +40,7 @@ const styles = {
         backgroundColor: '#D3D3D3',
         height: '35%',
         width: '100%',
-        fontSize: '120%',
+        fontSize: fontSizePadrao,
         fontFamily: fontPadrao,
         color: fontCinzaEscuro,
         paddingLeft: '5%',
@@ -53,7 +52,7 @@ const styles = {
         backgroundColor: azulPadrao,
         height: '40%',
         width: '15%',
-        fontSize: fontSizeButton,
+        fontSize: fontSizePadrao,
         fontFamily: fontPadrao,
         color: brancoPadrao,
         alignItems: 'center',
