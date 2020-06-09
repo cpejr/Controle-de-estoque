@@ -21,9 +21,8 @@ routes.post('/newUser', userController.create);
 routes.get('/listUser', userController.index);
 routes.delete('/deleteUser/:userCPF', userController.delete);
 routes.get('/selectUser/:userCPF', userController.selectUser);
-routes.put('/edituserinfo', userController.editinfo);
 routes.put('/edituserpass', userController.editpass);
-
+routes.put('/editinfo', userController.edituserinfo);
 
 routes.get('/storageChangeRecord', storageChangeRecordController.index);
 routes.post('/storageChangeRecord', storageChangeRecordController.create);
