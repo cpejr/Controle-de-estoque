@@ -23,31 +23,51 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',
-        width: '18%',
-        margin: '0% 0% 0% 5%'
-    },
-    typoStyle:{
-        color: fontCinzaEscuro,
-        fontFamily: fontPadrao,
-        fontSize: '3.5vh',
-        marginBottom: '1%'
+        width: '30%',
+        margin: '0% 5% 0% 5%'
     },
     inputField: {
-        borderRadius: '50px',
-        // marginLeft: '10%',
+        borderRadius: '5vh',
         marginBottom: '2%',
         border: '1px solid #707070',
-        backgroundColor: '#D3D3D3',
-        height: '35%',
+        backgroundColor: '#B4B4B4',
+        height: '40%',
         width: '100%',
         fontSize: fontSizePadrao,
         fontFamily: fontPadrao,
         color: fontCinzaEscuro,
         paddingLeft: '5%',
-        alignItems: 'center'
+        alignItems: 'center',
+        textTransform: 'uppercase'
     },
+
+    selectContainer:{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        width: '15%',
+        margin: '0%'
+    },
+
+    selectField: {
+        borderRadius: '5vh',
+        marginBottom: '2%',
+        border: '1px solid #707070',
+        backgroundColor: '#B4B4B4',
+        height: '43.71%',
+        width: '100%',
+        fontSize: fontSizePadrao,
+        fontFamily: fontPadrao,
+        color: fontCinzaEscuro,
+        paddingLeft: '5%',
+        alignItems: 'center',
+        textTransform: 'uppercase'
+    },
+
     buttonSearch: {
-        borderRadius: '50px',
+        borderRadius: '5vh',
         margin: '0% 0% 0% 20%',
         backgroundColor: azulPadrao,
         height: '40%',
@@ -71,8 +91,8 @@ const styles = {
     titleContainer:{
         height: '20%',
         width: '100%',
-        backgroundColor: '#D3D3D3',
-        border:'0.5px solid #707070',
+        backgroundColor: '#B4B4B4',
+        borderBottom:'0.5px solid #707070',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -86,20 +106,42 @@ const styles = {
         justifyContent: 'center',
     },
 
+    typoStyleTitle:{
+        color: fontCinzaEscuro,
+        fontFamily: fontPadrao,
+        fontSize: fontSizeTitle,
+        marginBottom: '1%',
+        textTransform: 'uppercase'
+    },
+
+    bodyContainer:{
+        overflow: 'auto',
+        width: '100%',
+        height: '80%',
+    },
+
     productContainer:{
-        height: '20%',
+        height: '25%',
         width: '100%',
         backgroundColor: brancoPadrao,
-        border:'0.5px solid #707070',
+        borderBottom:'0.5px solid #707070',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        cursor: 'pointer'
     },
     productDiv:{
         width: '20%',
         display: 'flex',
         justifyContent: 'center',
+    },
+    typoStyleProduct:{
+        color: fontCinzaEscuro,
+        fontFamily: fontPadrao,
+        fontSize: fontSizePadrao,
+        marginBottom: '1%',
+        textTransform: 'uppercase'
     },
 };
 export default styles;

@@ -22,7 +22,30 @@ export default function ListaDeProdutos() {
                 id: '22222',
                 local: 'estante 10',
                 quantidade: '15',
+            },
+            {
+                name: 'Samsung X55',
+                type: 'notebook',
+                id: 'a3333',
+                local: 'estante 4',
+                quantidade: '22',
+            },
+            {
+                name: 'Dell Inspirion 7',
+                type: 'notebook',
+                id: 'a5545',
+                local: 'estante 4',
+                quantidade: '12',
+            },
+            {
+                name: 'LeNovo IdeaPad S145',
+                type: 'notebook',
+                id: 'a4444',
+                local: 'estante 4',
+                quantidade: '8',
             }
+
+
         ]
     };
 
@@ -53,17 +76,21 @@ export default function ListaDeProdutos() {
         if(searchProduct.length > 0) {
             if(searchProductBy === 'produto') {
                 let produtos = [];
-                props.produtos.map((item) => {
-                    if (item.name === searchProduct) {
-                        produtos.push(item);
-                    }
-                });
+                    const reg = new RegExp(searchProduct.toLowerCase(),"g");
+                    props.produtos.map((item) => {
+                        const parece = item.name.toLowerCase().match(reg);
+                        if(parece) {
+                            produtos.push(item);
+                        }
+                    });
                 setProduct(produtos);
             }
             else if(searchProductBy === 'tipo'){
                 let produtos = [];
+                const reg = new RegExp(searchProduct.toLowerCase(),"g");
                 props.produtos.map((item) => {
-                    if (item.type === searchProduct) {
+                    const parece = item.type.toLowerCase().match(reg);
+                    if(parece) {
                         produtos.push(item);
                     }
                 });
@@ -71,8 +98,10 @@ export default function ListaDeProdutos() {
             }
             else if(searchProductBy === 'id'){
                 let produtos = [];
+                const reg = new RegExp(searchProduct.toLowerCase(),"g");
                 props.produtos.map((item) => {
-                    if (item.id === searchProduct) {
+                    const parece = item.id.toLowerCase().match(reg);
+                    if(parece) {
                         produtos.push(item);
                     }
                 });
@@ -89,7 +118,7 @@ export default function ListaDeProdutos() {
             colunas.map((item) => {
                 return (
                     <div style={styles.titleDiv}>
-                        <Typography style={styles.typoStyle}>
+                        <Typography style={styles.typoStyleTitle}>
                             {item}
                         </Typography>
                     </div>
@@ -103,30 +132,29 @@ export default function ListaDeProdutos() {
             return (
                 produtos.map((item) => {
                     return (
-                        <div style={styles.productContainer}
-                             onClick={()=>{handleOpen(item)}}>
+                        <div style={styles.productContainer} onClick={()=>{handleOpen(item)}} >
                             <div style={styles.productDiv}>
-                                <Typography style={styles.typoStyle}>
+                                <Typography style={styles.typoStyleProduct}>
                                     {item.name}
                                 </Typography>
                             </div>
                             <div style={styles.productDiv}>
-                                <Typography style={styles.typoStyle}>
+                                <Typography style={styles.typoStyleProduct}>
                                     {item.type}
                                 </Typography>
                             </div>
                             <div style={styles.productDiv}>
-                                <Typography style={styles.typoStyle}>
+                                <Typography style={styles.typoStyleProduct}>
                                     {item.id}
                                 </Typography>
                             </div>
                             <div style={styles.productDiv}>
-                                <Typography style={styles.typoStyle}>
+                                <Typography style={styles.typoStyleProduct}>
                                     {item.local}
                                 </Typography>
                             </div>
                             <div style={styles.productDiv}>
-                                <Typography style={styles.typoStyle}>
+                                <Typography style={styles.typoStyleProduct}>
                                     {item.quantidade}
                                 </Typography>
                             </div>
@@ -137,7 +165,7 @@ export default function ListaDeProdutos() {
         }
         else {
             return (
-                <Typography>
+                <Typography style={styles.typoStyleProduct}>
                     Produto não encontrado no estoque.
                 </Typography>
             )
@@ -157,8 +185,8 @@ export default function ListaDeProdutos() {
                         placeholder="Pesquisar"
                     />
                 </div>
-                <div style={styles.fieldContainer}>
-                    <select name="select" style={styles.inputField} onChange={(e)=>onChangeSelectBy(e.target.value)}>
+                <div style={styles.selectContainer}>
+                    <select name="select" style={styles.selectField} onChange={(e)=>onChangeSelectBy(e.target.value)}>
                         <option value="produto" selected>PRODUTO</option>
                         <option value="tipo" >TIPO</option>
                         <option value="id">ID</option>
@@ -170,7 +198,9 @@ export default function ListaDeProdutos() {
                 <div style={styles.titleContainer}>
                     {renderColomnTitle()}
                 </div>
-                {renderProduct(products)}
+                <div style={styles.bodyContainer}>
+                    {renderProduct(products)}
+                </div>
 
             </div>
             {open === true && (<Produto product={productModal} open={true} onClose={handleClose}/>)}

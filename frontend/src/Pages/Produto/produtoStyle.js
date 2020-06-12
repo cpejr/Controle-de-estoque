@@ -18,7 +18,6 @@ const styles = {
         justifyContent: 'center',
         height: '100%',
         width: '100%',
-        margin: '0% 0% 0% 5%'
     },
     buttonRemove: {
         borderRadius: '50px',
