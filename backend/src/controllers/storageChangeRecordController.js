@@ -7,7 +7,7 @@ module.exports = {
             // product_name,
             // product_amount,
             // user_name,
-            lastChanged_at
+            updated_at
         } = req.body;
     
         await connection('storageChangeRecord').insert({
@@ -15,34 +15,34 @@ module.exports = {
             // product_name,
             // product_amount,
             // user_name,
-            lastChanged_at
+            updated_at
         });
         
         console.log("deu certo");
-        return res.json({lastChanged_at});
+        return res.json({updated_at});
     },
 
-    async index(req,res){
-        const storageChangeRecords = await connection('storageChangeRecord').select('*');
+    // async index(req,res){
+    //     const storageChangeRecords = await connection('storageChangeRecord').select('*');
 
-        return res.json(storageChangeRecords);
-    },
+    //     return res.json(storageChangeRecords);
+    // },
 
-    async averageConsumption(req,res){
-        const{
-            product_id,
-            date
-        } = req.body;
+    // async averageConsumption(req,res){
+    //     const{
+    //         product_id,
+    //         date
+    //     } = req.body;
 
-        const sum = await connection('StorageChangeRecord')
-        .sum('amount')
-        .where('product_id', product_id)
-        .andWhere('amount', '<', 0)
-        .andWhere('date'.getDate(),'>',date.getDate());
+    //     const sum = await connection('StorageChangeRecord')
+    //     .sum('amount')
+    //     .where('product_id', product_id)
+    //     .andWhere('amount', '<', 0)
+    //     .andWhere('date'.getDate(),'>',date.getDate());
 
-        return res.status(204).send(sum);
+    //     return res.status(204).send(sum);
 
-    },
+    // },
     
 
 };
