@@ -1,19 +1,12 @@
 
 exports.up = function(knex) {
     return knex.schema.createTable('storageChangeRecord', function(table){
-        table.string('product_id').primary();
-        table.string('product_name').notNullable();
-        table.integer('product_amount').notNullable();
-        table.string('user_name').notNullable();
-        table.date('lastChanged_at').notNullable();
-        // table.date('lastChanged_at').defaultTo(knex.fn.now());
-
-        //criar chave estrangeira
-        table.foreign('product_id').references('id').inTable('product');
-        table.foreign('product_name').references('name').inTable('product');
-        table.foreign('product_amount').references('amount').inTable('product');
-        table.foreign('user_name').references('userName').inTable('userData');
-
+        table.increments().primary();
+        table.string('product_id').notNullable().defaultTo('id do produto não encontrado').references('id').inTable('product');
+        table.string('product_name').notNullable().defaultTo('nome do produto não encontrado').references('name').inTable('product');
+        table.integer('product_amount').notNullable().defaultTo('quantidade não encontrado').references('amount').inTable('product');
+        table.string('user_name').notNullable().defaultTo('nome do usuário não encontrado').references('userName').inTable('userData');
+        table.timestamp("updated_at").defaultTo(knex.fn.now());
     });
   
 };
