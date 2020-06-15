@@ -6,48 +6,47 @@ module.exports = {
     async create(req, res){
         
         const {
-            user_name,
-            amount_after
+            product_id,
+            changed
         } = req.body;
     
     //usaremos o id do produto para a autorizacao e para determinar o contexto da requisicao
-        const product_id =req.headers.authorization;
+        const user_name = req.headers.name;
 
         const date = new Date()
         const updated_at =  date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'_'+date.getHours()+':'+date.getMinutes();
 
-        const product_name = knex.from('product').where({id, product_id}).select({product_id}).insert({id});
-        const product_amount= knex.from('product').where({id, product_id}).select({amount_before}).insert({amount});
+        
+        const product_name = await connection('product')
+        .where('id', product_id)
+        .select('name')
+        .first();
+        
+        const name = product_name.name; 
 
-    //inserir nas colunas da table. Completar com resto
-        const [change] = await connection('storageChangeRecord').insert({
-            amount_after,
-            updated_at,
-            product_id,
-            product_name,
-            amount_before,
-            user_name
-        });
-        return res.json({ change, updated_at });
-    },
-
-
-//     async index(req,res){
+        const amount = await connection('product')
+        .where('id', product_id)
+        .select('amount')
+        .first();
         
 
-//         // import express from 'express';
+        const newAmount = amount.amount + changed;
 
-//         const product= await knex('product').select('*');
+        await connection('storageChangeRecord').insert({
+            product_name: name,
+            product_id,
+            changed,
+            updated_at,
+            user_name
+        })
 
-//         const serialized= product.map(product => {
-//         return {
-//             product_id: product.id,
-//             product_name: product.name,
-//             product_amount: product.amount,
-//         };
-//         });
-//         return response.json(serialized);
-//     },
+        await connection('product')
+        .where('id',product_id)
+        .update({
+            amount: newAmount
+        })
 
+        return res.json({ updated_at, name, newAmount, user_name, product_id });
+    },
 
 };
