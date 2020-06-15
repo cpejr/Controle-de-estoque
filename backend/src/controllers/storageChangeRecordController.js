@@ -1,5 +1,4 @@
 const connection = require('../database/connection');
-const { from } = require('../database/connection');
 
 module.exports = {
     //o que será criado e editado por nós. Especificos dessa edicao. 
@@ -15,12 +14,13 @@ module.exports = {
 
         const date = new Date()
         const updated_at =  date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'_'+date.getHours()+':'+date.getMinutes();
-
         
-        const product_name = await connection('product')
+        try{
+             const product_name = await connection('product')
         .where('id', product_id)
         .select('name')
         .first();
+       
         
         const name = product_name.name; 
 
@@ -29,24 +29,37 @@ module.exports = {
         .select('amount')
         .first();
         
-
         const newAmount = amount.amount + changed;
 
-        await connection('storageChangeRecord').insert({
-            product_name: name,
-            product_id,
-            changed,
-            updated_at,
-            user_name
-        })
+        if(newAmount>= 0 ){
 
-        await connection('product')
-        .where('id',product_id)
-        .update({
-            amount: newAmount
-        })
+            await connection('storageChangeRecord').insert({
+                product_name: name,
+                product_id,
+                changed,
+                updated_at,
+                user_name
+            })
 
+            await connection('product')
+            .where('id',product_id)
+            .update({
+                amount: newAmount
+            })
+
+        
         return res.json({ updated_at, name, newAmount, user_name, product_id });
+        }   
+
+        else{
+            return res.json("ERRO numero");
+        }
+    }
+        
+    catch(ERRO){
+        return res.json("ERRO id");
+    }
+    
     },
 
 };
