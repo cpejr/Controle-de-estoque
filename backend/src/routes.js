@@ -26,7 +26,7 @@ routes.put('/editinfo', userController.edituserinfo);
 
 routes.get('/storageChangeRecord', storageChangeRecordController.index);
 routes.post('/storageChangeRecord', storageChangeRecordController.create);
-routes.get('/averageConsumption/:product_id',storageChangeRecordController.averageConsumption)
+// routes.get('/averageConsumption/:product_id',storageChangeRecordController.averageConsumption)
 
 
 
