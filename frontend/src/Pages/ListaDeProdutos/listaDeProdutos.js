@@ -15,6 +15,10 @@ export default function ListaDeProdutos() {
                 id: '11111',
                 local: 'estante 8',
                 quantidade: '10',
+                quantidadeAlerta: '3',
+                preco: 'R$1200,00',
+                ultimaCompra: '01/06/2020',
+                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
             },
             {
                 name: 'IPhone 11',
@@ -22,6 +26,11 @@ export default function ListaDeProdutos() {
                 id: '22222',
                 local: 'estante 10',
                 quantidade: '15',
+                quantidadeAlerta: '7',
+                preco: 'R$5000,00',
+                ultimaCompra: '29/05/2020',
+                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
+
             },
             {
                 name: 'Samsung X55',
@@ -29,6 +38,11 @@ export default function ListaDeProdutos() {
                 id: 'a3333',
                 local: 'estante 4',
                 quantidade: '22',
+                quantidadeAlerta: '10',
+                preco: 'R$2500,00',
+                ultimaCompra: '22/05/2020',
+                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
+
             },
             {
                 name: 'Dell Inspirion 7',
@@ -36,6 +50,11 @@ export default function ListaDeProdutos() {
                 id: 'a5545',
                 local: 'estante 4',
                 quantidade: '12',
+                quantidadeAlerta: '15',
+                preco: 'R$3300,00',
+                ultimaCompra: '03/04/2020',
+                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
+
             },
             {
                 name: 'LeNovo IdeaPad S145',
@@ -43,6 +62,11 @@ export default function ListaDeProdutos() {
                 id: 'a4444',
                 local: 'estante 4',
                 quantidade: '8',
+                quantidadeAlerta: '8',
+                preco: 'R$2200,00',
+                ultimaCompra: '17/05/2020',
+                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
+
             }
 
 
