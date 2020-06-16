@@ -10,7 +10,7 @@ import Produto from './Pages/Produto';
 import ListaDeUsuarios from './Pages/ListaDeUsuarios';
 import Usuario from './Pages/Usuario';
 import NovoUsuario from './Pages/NovoUsuario';
-import Expiring from './Pages/Expiring'
+import ListaDeCompras from './Pages/ListaDeCompras'
 import Ajuda from './Pages/Ajuda';
 
 export default function Routes(){
@@ -29,7 +29,7 @@ export default function Routes(){
                             <Route path="/ListaDeUsuarios" component={ListaDeUsuarios} />
                             <Route path="/usuario" component={Usuario} />
                             <Route path="/novoUsuario" component={NovoUsuario} />
-                            <Route path="/vencendo" component={Expiring} />
+                            <Route path="/listaDeCompras" component={ListaDeCompras} />
                             <Route path="/ajuda" component={Ajuda} />
                         </div>
                     </div>
