@@ -7,10 +7,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 
 import { IconContext } from "react-icons";
-import { FaUser, FaUsers, FaUserPlus } from "react-icons/fa";
+import { FaUser, FaUsers, FaUserPlus, FaShoppingCart } from "react-icons/fa";
 import { TiThList } from "react-icons/ti";
+import { MdPlaylistAdd, MdHelp } from 'react-icons/md'
+
 
 export default function SideBar(){
     let history = useHistory();
@@ -19,7 +22,6 @@ export default function SideBar(){
             <List style={styles.SideBarContainer}>
 
                 <ListItem button onClick={()=>{
-                    console.log('Tentativa')
                     history.push('/perfil')
                 }}>
                     <ListItemIcon>
@@ -30,8 +32,9 @@ export default function SideBar(){
                     <ListItemText primary={<Typography style={styles.optionText}>CLARISSE LINSPECTOR</Typography>}/>
                 </ListItem>
 
+                <Divider/>
+
                 <ListItem button onClick={()=>{
-                    console.log('Tentativa')
                     history.push('/listaDeProdutos')
                 }}>
                         <ListItemIcon>
@@ -42,8 +45,9 @@ export default function SideBar(){
                         <ListItemText primary={<Typography style={styles.optionText}>LISTA DE PRODUTOS</Typography>} />
                 </ListItem>
 
+                <Divider/>
+
                 <ListItem button onClick={()=>{
-                    console.log('Tentativa')
                     history.push('/listaDeUsuarios')
                 }}>
                     <ListItemIcon>
@@ -54,8 +58,9 @@ export default function SideBar(){
                     <ListItemText primary={<Typography style={styles.optionText}>LISTA DE USUÁRIOS</Typography>} />
                 </ListItem>
 
+                <Divider/>
+
                 <ListItem button onClick={()=>{
-                    console.log('Tentativa')
                     history.push('/novoUsuario')
                 }}>
                     <ListItemIcon>
@@ -65,6 +70,49 @@ export default function SideBar(){
                     </ListItemIcon>
                     <ListItemText primary={<Typography style={styles.optionText}>NOVO USUÁRIO</Typography>} />
                 </ListItem>
+
+                <Divider/>
+
+                <ListItem button onClick={()=>{
+                    history.push('/novoProduto')
+                }}>
+                    <ListItemIcon>
+                        <IconContext.Provider value={{ size: '1.8em' }}>
+                            <MdPlaylistAdd />
+                        </IconContext.Provider>
+                    </ListItemIcon>
+                    <ListItemText primary={<Typography style={styles.optionText}>NOVO PRODUTO</Typography>} />
+                </ListItem>
+
+                <Divider/>
+
+                <ListItem button onClick={()=>{
+                    history.push('/listaDeCompras')
+                }}>
+                    <ListItemIcon>
+                        <IconContext.Provider value={{ size: '1.8em' }}>
+                            <FaShoppingCart />
+                        </IconContext.Provider>
+                    </ListItemIcon>
+                    <ListItemText primary={<Typography style={styles.optionText}>LISTA DE COMPRAS</Typography>} />
+                </ListItem>
+
+                <Divider/>
+
+                <ListItem button onClick={()=>{
+                    history.push('/ajuda')
+                }}>
+                    <ListItemIcon>
+                        <IconContext.Provider value={{ size: '1.8em' }}>
+                            <MdHelp />
+                        </IconContext.Provider>
+                    </ListItemIcon>
+                    <ListItemText primary={<Typography style={styles.optionText}>AJUDA</Typography>} />
+                </ListItem>
+
+                <Divider/>
+
+                <img src='/logo_cpe_preta.png' alt='Logo CPE' style={styles.logo}/>
 
             </List>
     )
