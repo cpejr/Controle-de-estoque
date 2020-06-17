@@ -4,6 +4,7 @@ exports.up = function(knex) {
         table.string('product_id').notNullable().defaultTo('erro');
         table.string('product_name').notNullable().defaultTo('erro').references('name').inTable('product');
         table.integer('changed').notNullable().defaultTo('erro');
+        table.integer('newAmount').notNullable().defaultTo('erro');
         table.string('user_name').notNullable().defaultTo('erro').references('userName').inTable('userData');
         table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
     });

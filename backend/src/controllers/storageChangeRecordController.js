@@ -38,7 +38,8 @@ module.exports = {
                 product_id,
                 changed,
                 updated_at,
-                user_name
+                user_name,
+                newAmount
             })
 
             await connection('product')
@@ -60,6 +61,13 @@ module.exports = {
         return res.json("ERRO id");
     }
     
+    },
+
+    // Metodo para listar todos os usuários do sistema 
+    async index(req,res){
+        const history = await connection('storageChangeRecord').select('*');
+
+        return res.json(history);
     },
 
 };

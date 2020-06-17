@@ -27,6 +27,17 @@ exports.seed = function(knex) {
         allertAmount: '9',
         description: 'so nao e mais doce do que voce'
         },
+        {name: 'bala',
+        shelfLife: '10/10/2021',
+        location: 'first floor',
+        id: 'cpe1236',
+        type: 'alimento',
+        lastBuyDate: '10/10/2018',
+        lastBuyPrice: '1,00',
+        amount: '5',
+        allertAmount: '1',
+        description: 'cuidado com os dentes'
+        },
         ]);
     });
 };
