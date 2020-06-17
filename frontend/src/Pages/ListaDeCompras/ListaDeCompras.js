@@ -130,7 +130,8 @@ const products = [
 export default function ListaDeCompras(){
     const [selectedProducts, setSelectedProducts] = useState([])
     const [remainingProducts, setRemainingProducts] = useState([])
-    const [reload, setReload] = useState(false)
+    const [reload, setReload] = useState(false);
+    const [filledAmounts, setFilledAmounts] = useState(0)
     const [open, setOpen] = useState(false);
 
     useEffect(()=>{
@@ -139,12 +140,16 @@ export default function ListaDeCompras(){
     },[])
 
     function handleUnselect(index){
+        
         remainingProducts.push(selectedProducts[index])
         remainingProducts.sort((a, b)=>{return a.amount-b.amount})
         setRemainingProducts ( remainingProducts)
-
+        
         selectedProducts.splice(index, 1)
         setSelectedProducts ( selectedProducts )
+
+        setFilledAmounts(selectedProducts.length)
+        
 
         setReload(!reload)
     }
@@ -160,9 +165,30 @@ export default function ListaDeCompras(){
         setReload(!reload)
     }
 
+    function handleChange(e, Id){
+        console.log(`entrou aqui`)
+        const index = selectedProducts.findIndex( product => product.productId === Id)
+        if (index!=-1){
+            selectedProducts[index] = {
+                productName: selectedProducts[index].productName,
+                productId: selectedProducts[index].productId,
+                amount: selectedProducts[index].amount,
+                boughtAmount: e.target.value
+            }
+            setSelectedProducts(selectedProducts)
+            if(e.target.value) setFilledAmounts(selectedProducts.length)
+            else setFilledAmounts(filledAmounts-1)
+        }
+    }
+
 
     const handleClickOpen = () => {
-        setOpen(true);
+        if (filledAmounts===selectedProducts.length){
+            setOpen(true);
+        }
+        else{
+            alert(`Preencha todas as quantidades compradas`)
+        }
     };
 
     const handleClose = () => {
@@ -241,7 +267,7 @@ export default function ListaDeCompras(){
                                             <td style={styles.tableElement}>{product.productName}</td>
                                             <td style={styles.tableElement}>{product.productId}</td>
                                             <td style={styles.tableElement}>
-                                                <input type='text' style={styles.numberInput} placeHolder='N°'/>
+                                                <input type='text' style={styles.numberInput} placeHolder='N°' onChange={(e)=>handleChange(e, product.productId)}/>
                                             </td>
                                             <td style={styles.tableLastElement}>
                                                 <IconContext.Provider value={{ size: '1.8em', color: '#F51616' }}>
@@ -258,7 +284,7 @@ export default function ListaDeCompras(){
                                             <td style={styles.tableElement}>{product.productName}</td>
                                             <td style={styles.tableElement}>{product.productId}</td>
                                             <td style={styles.tableElement}>
-                                                <input type='text' style={styles.numberInput} placeHolder='N°'/>
+                                                <input type='text' style={styles.numberInput} placeHolder='N°' onChange={(e)=>handleChange(e, product.productId)}/>
                                             </td>
                                             <td style={styles.tableLastElement}>
                                                 <IconContext.Provider value={{ size: '1.8em', color: '#F51616' }} >

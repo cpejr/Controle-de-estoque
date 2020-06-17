@@ -28,7 +28,7 @@ export default function Confirmacao(props) {
                 props.boughtList && props.boughtList.map(product=>{
                     return (
                         <li>
-                            {product.amount} {product.productName} (id: {product.productId})
+                            {product.boughtAmount} {product.productName} (id: {product.productId})
                         </li>
                     )
                 })

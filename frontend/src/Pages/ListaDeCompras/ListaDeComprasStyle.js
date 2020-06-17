@@ -42,14 +42,14 @@ const styles = {
         borderBottom: '1px solid #707070',
         textAlign: 'center',
         fontSize: '2vh',
-        padding: '30px',
+        padding: '1em',
     },
 
     tableLastElement: {
         borderBottom: '1px solid #707070',
         textAlign: 'center',
         fontSize: '2vh',
-        padding: '30px',
+        padding: '1em',
         cursor: 'pointer'
     },
 
@@ -62,13 +62,13 @@ const styles = {
 
     openShoppingListButton: {
         color: '#fff',
-        fontSize: '25px',
+        fontSize: '1em',
         fontWeight: '500',
         backgroundColor: '#043741',
-        padding: '20px 40px 20px 40px',
-        borderRadius: '40px',
+        padding: '1em 2em 1em 2em',
+        borderRadius: '4em',
         border: '1px solid #707070',
-        marginTop: '20px'
+        marginTop: '2%'
     }
 
 
