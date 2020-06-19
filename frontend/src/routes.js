@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './Pages/Login'
 import SideBar from './SideBar';
 import Header from './Header';
-import Perfil from './Pages/Perfil';
 import ListaDeProdutos from './Pages/ListaDeProdutos';
 import Produto from './Pages/Produto';
 import ListaDeUsuarios from './Pages/ListaDeUsuarios';
