@@ -1,47 +1,51 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import styles from './ListaDeUsuariosStyle'
 
-let admins = [
+let users = [
     {
-        name: 'Arthur Lima',
+        userName: 'Arthur Lima',
+        userType: 'Manager'
     },
     {
-        name: 'Izabela Brandt',
+        userName: 'Izabela Brandt',
+        userType: 'Manager'
     },
     {
-        name: 'João Trindade',
+        userName: 'João Trindade',
+        userType: 'Manager'
     },
     {
-        name: 'Carol Batista',
-    },
-]
-
-let managers = [
-    {
-        name: 'Raphael Souza',
+        userName: 'Carol Batista',
+        userType: 'Manager'
     },
     {
-        name: 'Elias Silva',
+        userName: 'Raphael Souza',
+        userType: 'Admin'
     },
     {
-        name: 'Vinícius Morais',
-    },
-]
-
-
-let employees = [
-    {
-        name: 'Lucas Milhorato',
+        userName: 'Elias Silva',
+        userType: 'Admin'
     },
     {
-        name: 'André Pinto',
+        userName: 'Vinícius Morais',
+        userType: 'Admin'
     },
     {
-        name: 'Bernardo Andrade',
+        userName: 'Lucas Milhorato',
+        userType: 'Employee'
     },
     {
-        name: 'Lucas Chaia',
+        userName: 'André Pinto',
+        userType: 'Employee'
+    },
+    {
+        userName: 'Bernardo Andrade',
+        userType: 'Employee'
+    },
+    {
+        userName: 'Lucas Chaia',
+        userType: 'Employee'
     },
 ]
 
@@ -55,55 +59,68 @@ export default function ListaDeUsuarios(){
 
             <div style={styles.userTypeHeader}>ADMINS</div>
             <div style={styles.userTypeContainer}>
-                {admins.map(admin=>{
-                    return (
-                        <div style={styles.userContainer} 
-                            onClick={()=>{
-                                history.push({
-                                    pathname: '/usuario',
-                                    state: admin
-                                })}
-                            }
-                        >
-                            <div>{admin.name}</div>
-                        </div>
-                    )
+                {users.map(user=>{
+                    if(user.userType==='Admin'){
+                        return (
+                            <div style={styles.userContainer} 
+                                onClick={()=>{
+                                    history.push({
+                                        pathname: '/usuario',
+                                        state: {
+                                            calledRoute: 'usuario',
+                                            user: user
+                                        }
+                                    })}
+                                }
+                            >
+                                <div>{user.userName}</div>
+                            </div>
+                        )
+                    }
                 })}
             </div>
 
             <div style={styles.userTypeHeader}>GERENTES</div>
             <div style={styles.userTypeContainer}>
-                {managers.map(manager=>{
-                    return (
-                        <div style={styles.userContainer} 
-                            onClick={()=>{
-                                history.push({
-                                    pathname: '/usuario',
-                                    state: manager
-                                })}
-                            }
-                        >
-                            <div>{manager.name}</div>
-                        </div>
-                    )
+                {users.map(user=>{
+                    if (user.userType==='Manager'){
+                        return (
+                            <div style={styles.userContainer} 
+                                onClick={()=>{
+                                    history.push({
+                                        pathname: '/usuario',
+                                        state: {
+                                            user: user
+                                        }
+                                    })}
+                                }
+                            >
+                                <div>{user.userName}</div>
+                            </div>
+                        )
+                    }
                 })}
             </div>
 
             <div style={styles.userTypeHeader}>EMPREGADOS</div>
             <div style={styles.userTypeContainer}>
-                {employees.map(employee=>{
-                    return (
-                        <div style={styles.userContainer} 
-                            onClick={()=>{
-                                history.push({
-                                    pathname: '/usuario',
-                                    state: employee
-                                })}
-                            }
-                        >
-                            <div>{employee.name}</div>
-                        </div>
-                    )
+                {users.map(user=>{
+                    if (user.userType==='Employee'){
+                        return (
+                            <div style={styles.userContainer} 
+                                onClick={()=>{
+                                    history.push({
+                                        pathname: '/usuario',
+                                        state: {
+                                            user: user
+                                        }
+                                    })}
+                                }
+                            >
+                                <div>{user.userName}</div>
+                            </div>
+                        )
+                    }
                 })}
             </div>
 

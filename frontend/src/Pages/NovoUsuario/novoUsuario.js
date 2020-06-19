@@ -2,16 +2,20 @@ import React, {useState} from 'react';
 import styles from './novoUsuarioStyle';
 
 import { IconContext } from "react-icons";
-import { FaUserPlus } from "react-icons/fa";
+import { FaUserPlus, FaLock } from "react-icons/fa";
+
+const user = {
+    userType: 'Employee'
+}
 
 export default function NovoUsuario(){
-    const [userType, setUsertype] = useState('Adm');
-    const [userName, setUserName] = useState('Adm');
-    const [userPassword, setPassword] = useState('Adm');
+    const [newUserType, setNewUsertype] = useState('Adm');
+    const [newUserName, setNewUserName] = useState('Adm');
+    const [newUserPassword, setNewUserPassword] = useState('Adm');
     const [checkPassword, setCheckPassword] = useState('Adm');
 
     function handleSubmit(){
-        alert(`Usuário ${userName} criado com sucesso`)
+        alert(`Usuário ${newUserName} criado com sucesso`)
     }
 
     return(
@@ -23,26 +27,35 @@ export default function NovoUsuario(){
             </div>
             <div style={styles.formContainer}>
                 <div style={styles.infosContainer}>
-                    <input type='text' placeholder='USUÁRIO' style={styles.inputField} onChange={(e)=>{setUserName(e.target.value)}}/>
-                    <input type='password' placeholder='SENHA' style={styles.inputField} onChange={(e)=>{setPassword(e.target.value)}}/>
+                    <input type='text' placeholder='USUÁRIO' style={styles.inputField} onChange={(e)=>{setNewUserName(e.target.value)}}/>
+                    <input type='password' placeholder='SENHA' style={styles.inputField} onChange={(e)=>{setNewUserPassword(e.target.value)}}/>
                     <input type='password' placeholder='CONFIRME A SENHA' style={styles.inputField} onChange={(e)=>{setCheckPassword(e.target.value)}}/>
                 </div>
                 <div style={styles.userTypeAndSendContainer}>
                     <div style={styles.userTyperContainer}>
-                        <div placeholder='USUÁRIO' style={styles.handMadeRadio} onClick={()=>{setUsertype('Adm')}}>
-                            {userType==='Adm' ? <div style={styles.filledCircle}/> : <div style={styles.emptyCircle}/>}
+                        <div placeholder='USUÁRIO' style={styles.handMadeRadio} onClick={()=>{setNewUsertype('Adm')}}>
+                            {newUserType==='Adm' ? <div style={styles.filledCircle}/> : <div style={styles.emptyCircle}/>}
                             ADMINISTRADOR
                         </div>
-                        <div placeholder='SENHA' style={styles.handMadeRadio} onClick={()=>{setUsertype('Manager')}}>
-                            {userType==='Manager' ? <div style={styles.filledCircle}/> : <div style={styles.emptyCircle}/>}
+                        <div placeholder='SENHA' style={styles.handMadeRadio} onClick={()=>{setNewUsertype('Manager')}}>
+                            {newUserType==='Manager' ? <div style={styles.filledCircle}/> : <div style={styles.emptyCircle}/>}
                             GERENTE
                         </div>
-                        <div placeholder='CONFIRME A SENHA' style={styles.handMadeRadio} onClick={()=>{setUsertype('Employee')}}>
-                            {userType==='Employee' ? <div style={styles.filledCircle}/> : <div style={styles.emptyCircle}/>}
+                        <div placeholder='CONFIRME A SENHA' style={styles.handMadeRadio} onClick={()=>{setNewUsertype('Employee')}}>
+                            {newUserType==='Employee' ? <div style={styles.filledCircle}/> : <div style={styles.emptyCircle}/>}
                             FUNCIONÁRIO
                         </div>
                     </div>
-                    <div style={styles.sendButton} onClick={handleSubmit}>CRIAR</div>
+                    {
+                        (user.userType==='Adm') ? 
+                            <div style={styles.sendButton} onClick={handleSubmit}>CRIAR</div>
+                        :
+                            <div style={styles.sendButtonLocked}>
+                                <IconContext.Provider value={{ size: '2em' }}>
+                                    <FaLock />
+                                </IconContext.Provider>
+                            </div>
+                    }
                 </div>
             </div>
         </div>

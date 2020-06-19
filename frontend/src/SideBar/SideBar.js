@@ -22,7 +22,12 @@ export default function SideBar(){
             <List style={styles.SideBarContainer}>
 
                 <ListItem button onClick={()=>{
-                    history.push('/perfil')
+                    history.push({
+                        pathname: '/perfil',
+                        state: {
+                            calledRoute: 'perfil'
+                        }
+                    })
                 }}>
                     <ListItemIcon>
                     <IconContext.Provider value={{ size: '1.8em' }}>

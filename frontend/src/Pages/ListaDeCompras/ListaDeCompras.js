@@ -166,9 +166,8 @@ export default function ListaDeCompras(){
     }
 
     function handleChange(e, Id){
-        console.log(`entrou aqui`)
         const index = selectedProducts.findIndex( product => product.productId === Id)
-        if (index!=-1){
+        if (index!==-1){
             selectedProducts[index] = {
                 productName: selectedProducts[index].productName,
                 productId: selectedProducts[index].productId,

@@ -92,7 +92,19 @@ const styles = {
         color: '#ffff',
         cursor: 'pointer',
         fontSize: '160%'
-    }
+    },
+
+    sendButtonLocked: {
+        marginTop: '10%',
+        backgroundColor: '#707070',
+        padding: '1%',
+        paddingLeft: '8%',
+        paddingRight: '8%',
+        borderRadius: '5vh',
+        color: '#ffff',
+        cursor: 'pointer',
+        fontSize: '160%'
+    },
 
 };
 export default styles;
