@@ -2,7 +2,6 @@ const express = require('express');
 const productController = require('./controllers/productController');
 const userController = require('./controllers/userController');
 const storageChangeRecordController = require('./controllers/storageChangeRecordController');
-const productListController = require('./controllers/productListController');
 const routes = express.Router();
 
 
@@ -31,11 +30,6 @@ routes.post('/storageChangeRecord', storageChangeRecordController.create);
 routes.get('/averageConsumption',storageChangeRecordController.averageConsumption);
 routes.delete('/averageConsumptiondelete',storageChangeRecordController.delete);
 
-
-routes.delete('/productList/:productID', productListController.delete);
-routes.get('/productListSearch/:productID', productListController.search);
-routes.get('/productList', productListController.index);
-routes.post('/productList', productListController.create);
 
 
 
