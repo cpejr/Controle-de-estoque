@@ -60,4 +60,31 @@ module.exports = {
 
         return res.json(product);
     },
+
+    async editProduct(req, res){
+        const { 
+            id,
+            name, 
+            shelfLife, 
+            location, 
+            type, 
+            lastBuyDate, 
+            lastBuyPrice, 
+            allertAmount} = req.body;
+
+        const product = await connection('product')
+        .where('id', id)
+        .update({
+                name: name, 
+                shelfLife: shelfLife, 
+                location: location, 
+                type: type, 
+                lastBuyDate: lastBuyDate, 
+                lastBuyPrice: lastBuyPrice, 
+                allertAmount: allertAmount
+        })
+        
+
+        return res.status(201).json(product);
+    },
 };
