@@ -7,8 +7,6 @@ exports.up = function(knex) {
         table.integer('newAmount').notNullable().defaultTo('erro');
         table.string('user_name').notNullable().defaultTo('erro').references('userName').inTable('userData');
         table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
-        //para restringir acesso 
-        table.string('user_id').notNullable().defaultTo('erro').references('userType').inTable('userData');
     });
   
 };
