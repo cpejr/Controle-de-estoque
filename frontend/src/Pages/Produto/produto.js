@@ -2,16 +2,33 @@ import React from 'react';
 import styles from './produtoStyle';
 import { Typography, useMediaQuery, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, TextField } from "@material-ui/core";
 import { useTheme } from '@material-ui/core/styles';
+import Confirmacao from "./ModalConfirmacao";
 
 
 
 export default function Produto(props){
+
+    const [openConfirmacao, setOpenConfirmacao] = React.useState(false);
+    const [amountRemove, setAmountRemove] = React.useState(0);
+
+    const handleClickOpenConfirmacao = () =>{
+        setOpenConfirmacao(true);
+    };
+
+    const handleCloseConfirmacao = () => {
+        setOpenConfirmacao(false);
+    };
+
+    const handleAmountRemove = (amount) => {
+        setAmountRemove(amount)
+    };
+
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
 
     return(
-
+        <div>
             <Dialog
                 fullScreen={fullScreen}
                 open={props.open}
@@ -20,12 +37,12 @@ export default function Produto(props){
                 fullWidth='true'
                 maxWidth='md'
             >
-                <DialogTitle id="responsive-dialog-title" style={styles.titleStyle}>{props.product.name}</DialogTitle>
+                <DialogTitle id="responsive-dialog-title" style={styles.titleStyle}>{props.product.productName}</DialogTitle>
                 <DialogContent>
                     <div style={styles.fieldContainer}>
                         <div style={styles.descritionContainer}>
                             <div style={styles.textBoxDecrition}>
-                                {props.product.descricao}
+                                {props.product.description}
                             </div>
                         </div>
 
@@ -35,7 +52,7 @@ export default function Produto(props){
                                 id
                             </Typography>
                             <div style={styles.textBox}>
-                                {props.product.id}
+                                {props.product.productID}
                             </div>
                         </div>
                             <div style={styles.informationContainer}>
@@ -43,7 +60,7 @@ export default function Produto(props){
                                     tipo
                                 </Typography>
                                 <div style={styles.textBox}>
-                                    {props.product.type}
+                                    {props.product.productType}
                                 </div>
                             </div>
                             <div style={styles.informationContainer}>
@@ -51,7 +68,7 @@ export default function Produto(props){
                                     última compra
                                 </Typography>
                                 <div style={styles.textBox}>
-                                    {props.product.ultimaCompra}
+                                    {props.product.lastBuyDate}
                                 </div>
                             </div>
                         </div>
@@ -62,7 +79,7 @@ export default function Produto(props){
                                     local
                                 </Typography>
                                 <div style={styles.textBox}>
-                                    {props.product.local}
+                                    {props.product.productLocation}
                                 </div>
                             </div>
                             <div style={styles.informationContainer}>
@@ -70,7 +87,7 @@ export default function Produto(props){
                                     preço
                                 </Typography>
                                 <div style={styles.textBox}>
-                                    {props.product.preco}
+                                    {props.product.lastBuyPrice}
                                 </div>
                             </div>
                             <div style={styles.informationContainer}>
@@ -78,7 +95,7 @@ export default function Produto(props){
                                     quantidade alerta
                                 </Typography>
                                 <div style={styles.textBox}>
-                                    {props.product.quantidadeAlerta}
+                                    {props.product.allertAmount}
                                 </div>
                             </div>
                         </div>
@@ -88,7 +105,7 @@ export default function Produto(props){
                                     quantidade
                                 </Typography>
                                 <div style={styles.textBox}>
-                                    {props.product.quantidade}
+                                    {props.product.amount}
                                 </div>
                             </div>
                         </div>
@@ -101,14 +118,17 @@ export default function Produto(props){
                             type='number'
                             variant='outlined'
                             label="Quantidade"
+                            InputProps={{inputProps: {min: 0, max: props.product.amount}}}
+                            onChange={(e) => {handleAmountRemove(e.target.value)}}
                         />
-                        <Button style={styles.buttonRemove} onClick={props.onClose} color="primary">
+                        <Button style={styles.buttonRemove} onClick={handleClickOpenConfirmacao} color="primary" disabled={amountRemove===0}>
                             REMOVER
                         </Button>
                     </div>
                 </DialogActions>
             </Dialog>
-
+            {openConfirmacao && (<Confirmacao open={openConfirmacao} onClose={handleCloseConfirmacao} amount={amountRemove} productName={props.product.productName}/>)}
+        </div>
     )
 
 }

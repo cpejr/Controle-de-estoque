@@ -10,62 +10,62 @@ export default function ListaDeProdutos() {
     const props = {
         produtos: [
             {
-                name: 'Samsung Galaxy J5',
-                type: 'smartphone',
-                id: '11111',
-                local: 'estante 8',
-                quantidade: '10',
-                quantidadeAlerta: '3',
-                preco: 'R$1200,00',
-                ultimaCompra: '01/06/2020',
-                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
+                productName: 'Samsung Galaxy J5',
+                productType: 'smartphone',
+                productID: '11111',
+                productLocation: 'estante 8',
+                amount: '10',
+                allertAmount: '3',
+                lastBuyPrice: 'R$1200,00',
+                lastBuyDate: '01/06/2020',
+                description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
             },
             {
-                name: 'IPhone 11',
-                type: 'smartphone',
-                id: '22222',
-                local: 'estante 10',
-                quantidade: '15',
-                quantidadeAlerta: '7',
-                preco: 'R$5000,00',
-                ultimaCompra: '29/05/2020',
-                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
+                productName: 'IPhone 11',
+                productType: 'smartphone',
+                productID: '22222',
+                productLocation: 'estante 10',
+                amount: '15',
+                allertAmount: '7',
+                lastBuyPrice: 'R$5000,00',
+                lastBuyDate: '29/05/2020',
+                description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
 
             },
             {
-                name: 'Samsung X55',
-                type: 'notebook',
-                id: 'a3333',
-                local: 'estante 4',
-                quantidade: '22',
-                quantidadeAlerta: '10',
-                preco: 'R$2500,00',
-                ultimaCompra: '22/05/2020',
-                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
+                productName: 'Samsung X55',
+                productType: 'notebook',
+                productID: 'a3333',
+                productLocation: 'estante 4',
+                amount: '22',
+                allertAmount: '10',
+                lastBuyPrice: 'R$2500,00',
+                lastBuyDate: '22/05/2020',
+                description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
 
             },
             {
-                name: 'Dell Inspirion 7',
-                type: 'notebook',
-                id: 'a5545',
-                local: 'estante 4',
-                quantidade: '12',
-                quantidadeAlerta: '15',
-                preco: 'R$3300,00',
-                ultimaCompra: '03/04/2020',
-                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
+                productName: 'Dell Inspirion 7',
+                productType: 'notebook',
+                productID: 'a5545',
+                productLocation: 'estante 4',
+                amount: '12',
+                allertAmount: '15',
+                lastBuyPrice: 'R$3300,00',
+                lastBuyDate: '03/04/2020',
+                description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
 
             },
             {
-                name: 'LeNovo IdeaPad S145',
-                type: 'notebook',
-                id: 'a4444',
-                local: 'estante 4',
-                quantidade: '8',
-                quantidadeAlerta: '8',
-                preco: 'R$2200,00',
-                ultimaCompra: '17/05/2020',
-                descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
+                productName: 'LeNovo IdeaPad S145',
+                productType: 'notebook',
+                productID: 'a4444',
+                productLocation: 'estante 4',
+                amount: '8',
+                allertAmount: '8',
+                lastBuyPrice: 'R$2200,00',
+                lastBuyDate: '17/05/2020',
+                description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit metus interdum, laoreet nostra nam sed vehicula ac tellus pulvinar, nunc morbi dignissim scelerisque proin sociosqu tempus pharetra. Eleifend dignissim himenaeos magnis varius fusce vehicula netus consequat adipiscing elit amet, felis pharetra nec aliquet elementum parturient pellentesque semper imperdiet. Non finibus parturient felis nam bibendum magna dis a ultricies, congue netus cubilia facilisi nascetur malesuada torquent orci feugiat, vivamus ad consectetur primis lacinia placerat venenatis convallis. Praesent torquent tristique proin ut curae curabitur class eleifend, consequat sed mauris bibendum fermentum ante.'
 
             }
 
@@ -102,7 +102,7 @@ export default function ListaDeProdutos() {
                 let produtos = [];
                     const reg = new RegExp(searchProduct.toLowerCase(),"g");
                     props.produtos.map((item) => {
-                        const parece = item.name.toLowerCase().match(reg);
+                        const parece = item.productName.toLowerCase().match(reg);
                         if(parece) {
                             produtos.push(item);
                         }
@@ -113,7 +113,7 @@ export default function ListaDeProdutos() {
                 let produtos = [];
                 const reg = new RegExp(searchProduct.toLowerCase(),"g");
                 props.produtos.map((item) => {
-                    const parece = item.type.toLowerCase().match(reg);
+                    const parece = item.productType.toLowerCase().match(reg);
                     if(parece) {
                         produtos.push(item);
                     }
@@ -124,7 +124,7 @@ export default function ListaDeProdutos() {
                 let produtos = [];
                 const reg = new RegExp(searchProduct.toLowerCase(),"g");
                 props.produtos.map((item) => {
-                    const parece = item.id.toLowerCase().match(reg);
+                    const parece = item.productID.toLowerCase().match(reg);
                     if(parece) {
                         produtos.push(item);
                     }
@@ -159,27 +159,27 @@ export default function ListaDeProdutos() {
                         <div style={styles.productContainer} onClick={()=>{handleOpen(item)}} >
                             <div style={styles.productDiv}>
                                 <Typography style={styles.typoStyleProduct}>
-                                    {item.name}
+                                    {item.productName}
                                 </Typography>
                             </div>
                             <div style={styles.productDiv}>
                                 <Typography style={styles.typoStyleProduct}>
-                                    {item.type}
+                                    {item.productType}
                                 </Typography>
                             </div>
                             <div style={styles.productDiv}>
                                 <Typography style={styles.typoStyleProduct}>
-                                    {item.id}
+                                    {item.productID}
                                 </Typography>
                             </div>
                             <div style={styles.productDiv}>
                                 <Typography style={styles.typoStyleProduct}>
-                                    {item.local}
+                                    {item.productLocation}
                                 </Typography>
                             </div>
                             <div style={styles.productDiv}>
                                 <Typography style={styles.typoStyleProduct}>
-                                    {item.quantidade}
+                                    {item.amount}
                                 </Typography>
                             </div>
                         </div>
