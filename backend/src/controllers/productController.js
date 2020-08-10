@@ -1,90 +1,46 @@
-const crypto = require('crypto');
-const connection = require('../database/connection');
+const products = require('../models/products')
 
 module.exports = {
     async create(req, res){
-        const { 
-            name, 
-            shelfLife, 
-            location, 
-            type, 
-            lastBuyDate, 
-            lastBuyPrice, 
-            amount, 
-            allertAmount} = req.body;
-        
-            const id = crypto.randomBytes(4).toString('HEX');
-        
-            await connection('product').insert({
-                id,
-                name, 
-                shelfLife, 
-                location, 
-                type, 
-                lastBuyDate, 
-                lastBuyPrice, 
-                amount, 
-                allertAmount
-            });
+        const newProduct = { 
+            name: req.body.name,
+            location: req.body.location, 
+            type: req.body.type, 
+            lastBuyDate: req.body.lastBuyDate, 
+            lastBuyPrice: req.body.lastBuyPrice, 
+            amount: req.body.amount, 
+            allertAmount: req.body.allertAmount,
+            description: req.body.description
+        }
 
-        return res.json({ id });
+        const response = await products.createNew(newProduct)
+
+        return res.json( response );
     },
 
     async index(req, res){
-        const products = await connection('product').select('*');
+        const allProducts = await products.getAll()
 
-        return res.json(products);
+        return res.json(allProducts);
     },
 
     async delete(req, res){
         const {id} = req.params;
         // const userType = request.headers.authorization;
 
-        const product = await connection('product')
-        .where('id', id)
-        .select('id')
-        .first();
+        const result = await products.deleteOne(id)
 
-        await connection('product').where('id', id).delete();
-
-        return res.status(204).send();//Status de sucesso
-    },
-
-    async search(req, res){
-        const {id} = req.params;
-
-        const product = await connection('product')
-        .where('id', id)
-        .select('id', 'name', 'type')
-        .first();
-
-        return res.json(product);
+        return res.json(result)
     },
 
     async editProduct(req, res){
-        const { 
-            id,
-            name, 
-            shelfLife, 
-            location, 
-            type, 
-            lastBuyDate, 
-            lastBuyPrice, 
-            allertAmount} = req.body;
 
-        const product = await connection('product')
-        .where('id', id)
-        .update({
-                name: name, 
-                shelfLife: shelfLife, 
-                location: location, 
-                type: type, 
-                lastBuyDate: lastBuyDate, 
-                lastBuyPrice: lastBuyPrice, 
-                allertAmount: allertAmount
-        })
+        const id = req.params.id
+
+        const newFields = req.body
+
+        const response = await products.update(id, newFields)
         
-
-        return res.status(201).json(product);
+        return res.json(response)
     },
 };

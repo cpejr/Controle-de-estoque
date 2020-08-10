@@ -14,7 +14,7 @@ routes.get('/', (req,res)=> {
 routes.get('/productManagement', productController.index);
 routes.post('/productManagement', productController.create);
 routes.delete('/productManagement/:id', productController.delete);
-routes.get('/search/:id', productController.search);
+routes.put('/productManagement/:id', productController.editProduct)
 
 routes.post('/newUser/:id', userController.create);
 routes.get('/listUser', userController.index);
