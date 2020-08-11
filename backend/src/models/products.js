@@ -94,6 +94,19 @@ class ProductsActions {
   }
 
 
+  
+  static findProduct(id) {
+    return new Promise((resolve, reject) => {
+      Products.findById( id ).then((result) => {
+        resolve(result);
+      }).catch((error) => {
+        console.log(error);
+        reject(error);
+      });
+    });
+  }
+
+
 }
 
 module.exports = ProductsActions
