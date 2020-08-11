@@ -4,7 +4,10 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogTitle from '@material-ui/core/DialogTitle';
+import styles from './modalConfirmacaoStyles'
+import {useTheme} from "@material-ui/core/styles";
+import {useMediaQuery} from "@material-ui/core";
 
 
 export default function Confirmacao(props) {
@@ -14,20 +17,18 @@ export default function Confirmacao(props) {
             <Dialog
                 open={true}
                 onClose={props.onClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">{"Confirma a retirada de:"}</DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        {props.amount + props.product.productName}
+                <DialogTitle style={styles.titleStyle}>{"Confirma a retirada de:"}</DialogTitle>
+                <DialogContent style={styles.content}>
+                    <DialogContentText style={styles.textStyle}>
+                        {props.amount + ' ' + props.product.productName + ' (ID: ' + props.product.productID + ')'}
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={props.onClose} color="primary">
+                <DialogActions style={styles.actions}>
+                    <Button onClick={props.onClose} style={styles.button}>
                         Confirmo
                     </Button>
-                    <Button onClick={props.onClose} color="primary" autoFocus>
+                    <Button onClick={props.onClose} style={styles.button} autoFocus>
                         Cancelar
                     </Button>
                 </DialogActions>

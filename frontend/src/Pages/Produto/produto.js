@@ -127,7 +127,7 @@ export default function Produto(props){
                     </div>
                 </DialogActions>
             </Dialog>
-            {openConfirmacao && (<Confirmacao open={openConfirmacao} onClose={handleCloseConfirmacao} amount={amountRemove} productName={props.product.productName}/>)}
+            {openConfirmacao && (<Confirmacao open={openConfirmacao} onClose={handleCloseConfirmacao} amount={amountRemove} product={props.product}/>)}
         </div>
     )
 
