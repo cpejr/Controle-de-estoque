@@ -2,38 +2,26 @@ const express = require('express');
 const productController = require('./controllers/productController');
 const userController = require('./controllers/userController');
 const storageChangeRecordController = require('./controllers/storageChangeRecordController');
-const productListController = require('./controllers/productListController');
-const sessionController = require('./controllers/sessionController');
+const reloadController = require('./controllers/reloadControler')
 const routes = express.Router();
-
-
-routes.get('/', (req,res)=> {
-    return res.json('Souzão é lindo');
-});
 
 routes.get('/productManagement', productController.index);
 routes.post('/productManagement', productController.create);
-routes.delete('/productManagement/:id', productController.delete);
-routes.get('/search/:id', productController.search);
+routes.delete('/productManagement', productController.delete);
+routes.put('/productManagement', productController.editProduct);
 
-routes.post('/newUser/:id', userController.create);
-routes.get('/listUser', userController.index);
-routes.delete('/deleteUser/:id', userController.delete);
-routes.get('/selectUser/:id', userController.selectUser);
+routes.get('/reload', reloadController.allReloads);
+routes.post('/reload', reloadController.createReload);
 
-routes.post('/logout', sessionController.logout);
-routes.post('/session', sessionController.create);
+routes.post('/userManagement', userController.create);
+routes.get('/userManagement', userController.index);
+routes.delete('/userManagement', userController.delete);
+routes.put('/userManagement', userController.update);
 
-routes.get('/storageChangeRecord/:id', storageChangeRecordController.index);
-routes.post('/storageChangeRecord/:id', storageChangeRecordController.create);
-routes.delete('/storageChangeRecord/:id', userController.delete);
-
-routes.delete('/productList/:productID', productListController.delete);
-routes.get('/productListSearch/:productID', productListController.search);
-routes.get('/productList', productListController.index);
-routes.post('/productList', productListController.create);
-
-
+routes.get('/recordManagement', storageChangeRecordController.history);
+routes.get('/recordManagement', storageChangeRecordController.cancelledHistory);
+routes.post('/recordManagement', storageChangeRecordController.retrieve);
+routes.delete('/recordManagement', storageChangeRecordController.delete);
 
 
 module.exports = routes;

@@ -1,90 +1,63 @@
-const crypto = require('crypto');
-const connection = require('../database/connection');
+const products = require('../models/products')
 
 module.exports = {
     async create(req, res){
-        const { 
-            name, 
-            shelfLife, 
-            location, 
-            type, 
-            lastBuyDate, 
-            lastBuyPrice, 
-            amount, 
-            allertAmount} = req.body;
-        
-            const id = crypto.randomBytes(4).toString('HEX');
-        
-            await connection('product').insert({
-                id,
-                name, 
-                shelfLife, 
-                location, 
-                type, 
-                lastBuyDate, 
-                lastBuyPrice, 
-                amount, 
-                allertAmount
-            });
+        const newProduct = { 
+            name: req.body.name,
+            location: req.body.location, 
+            type: req.body.type, 
+            lastBuyDate: req.body.lastBuyDate, 
+            lastBuyPrice: req.body.lastBuyPrice, 
+            amount: req.body.amount, 
+            allertAmount: req.body.allertAmount,
+            description: req.body.description
+        }
 
-        return res.json({ id });
+        try{
+            const response = await products.createNew(newProduct)
+            return res.json( response );
+        }
+        catch (error){
+            res.status(500).json({ error: error });
+        }
+
     },
 
     async index(req, res){
-        const products = await connection('product').select('*');
-
-        return res.json(products);
+        try {
+            const allProducts = await products.getAll()
+            return res.json(allProducts);
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
     },
 
     async delete(req, res){
-        const {id} = req.params;
-        // const userType = request.headers.authorization;
+        const id = req.body.id;
 
-        const product = await connection('product')
-        .where('id', id)
-        .select('id')
-        .first();
-
-        await connection('product').where('id', id).delete();
-
-        return res.status(204).send();//Status de sucesso
-    },
-
-    async search(req, res){
-        const {id} = req.params;
-
-        const product = await connection('product')
-        .where('id', id)
-        .select('id', 'name', 'type')
-        .first();
-
-        return res.json(product);
+        try{
+            const result = await products.deleteOne(id)
+            return res.json(result)
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
     },
 
     async editProduct(req, res){
-        const { 
-            id,
-            name, 
-            shelfLife, 
-            location, 
-            type, 
-            lastBuyDate, 
-            lastBuyPrice, 
-            allertAmount} = req.body;
 
-        const product = await connection('product')
-        .where('id', id)
-        .update({
-                name: name, 
-                shelfLife: shelfLife, 
-                location: location, 
-                type: type, 
-                lastBuyDate: lastBuyDate, 
-                lastBuyPrice: lastBuyPrice, 
-                allertAmount: allertAmount
-        })
-        
+        const id = req.body.id
 
-        return res.status(201).json(product);
+        const newFields = req.body.newFields
+
+        try{
+            const response = await products.update(id, newFields)
+            return res.json(response)
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
     },
+
 };
