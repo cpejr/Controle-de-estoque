@@ -26,63 +26,32 @@ const userSchema = new mongoose.Schema({
 const Users = mongoose.model("Users", userSchema);
 
 class UsersActions {
-  static getAll() {
-    return new Promise((resolve, reject) => {
-      Users.find()
-        .then((results) => {
-          resolve(results);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+
+  static async getAll() {
+    const results = await Users.find();
+    return results;
   }
 
-  static createNew(receivedData) {
-    return new Promise((resolve, reject) => {
-      const newUser = {
-        firebaseId: receivedData.firebaseId,
-        userName: receivedData.userName,
-        userType: receivedData.userType,
-        userCPF: receivedData.userCPF,
-        userDate: receivedData.userDate,
-      };
-      Users.create(newUser)
-        .then((result) => {
-          resolve(result);
-        })
-        .catch((error) => {
-          console.log(error);
-          reject(error);
-        });
-    });
+  static async createNew(user) {
+    const result = await Users.create(user);
+    return result;
   }
 
-  static deleteOne(id) {
-    return new Promise((resolve, reject) => {
-      Users.findByIdAndDelete(id)
-        .then((result) => {
-          resolve(result);
-        })
-        .catch((error) => {
-          console.log(error);
-          reject(error);
-        });
-    });
+  static async deleteOne(id) {
+    const result = await Users.findByIdAndDelete(id);
+    return result;
   }
 
-  static update(id, newFields) {
-    return new Promise((resolve, reject) => {
-      Users.findOneAndUpdate({ _id: id }, newFields)
-        .then((results) => {
-          resolve(results);
-        })
-        .catch((error) => {
-          console.log(error);
-          reject(error);
-        });
-    });
+  static async update(id, newFields) {
+    const result = await Users.findOneAndUpdate({ _id: id }, newFields);
+    return result;
   }
+
+  static async findUser(id) {
+    const result = await Users.findById(id);
+    return result;
+  }
+
 }
 
 module.exports = UsersActions;
