@@ -13,34 +13,51 @@ module.exports = {
             description: req.body.description
         }
 
-        const response = await products.createNew(newProduct)
+        try{
+            const response = await products.createNew(newProduct)
+            return res.json( response );
+        }
+        catch (error){
+            res.status(500).json({ error: error });
+        }
 
-        return res.json( response );
     },
 
     async index(req, res){
-        const allProducts = await products.getAll()
-
-        return res.json(allProducts);
+        try {
+            const allProducts = await products.getAll()
+            return res.json(allProducts);
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
     },
 
     async delete(req, res){
-        const {id} = req.params;
-        // const userType = request.headers.authorization;
+        const id = req.body.id;
 
-        const result = await products.deleteOne(id)
-
-        return res.json(result)
+        try{
+            const result = await products.deleteOne(id)
+            return res.json(result)
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
     },
 
     async editProduct(req, res){
 
-        const id = req.params.id
+        const id = req.body.id
 
-        const newFields = req.body
+        const newFields = req.body.newFields
 
-        const response = await products.update(id, newFields)
-        
-        return res.json(response)
+        try{
+            const response = await products.update(id, newFields)
+            return res.json(response)
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
     },
+
 };

@@ -39,73 +39,32 @@ const Products = mongoose.model('Products', productSchema);
 
 class ProductsActions {
 
-    static getAll(){
-        return new Promise((resolve, reject) => {
-            Products.find().then((results) => {
-                resolve(results);
-            }).catch((err) => {
-                reject(err);
-            });
-        });
-    }
+  static async getAll(){
+    const results = await Products.find();
+    return results;
+  }
 
-    static createNew(receivedData) {
-        return new Promise((resolve, reject) => {
-            const product = { 
-                name: receivedData.name,
-                location: receivedData.location,
-                type: receivedData.type,
-                lastBuyDate: receivedData.lastBuyDate,
-                lastBuyPrice: receivedData.lastBuyPrice,
-                amount: receivedData.amount,
-                allertAmount: receivedData.allertAmount,
-                description: receivedData.description,
-            };
-            Products.create(product).then((result) => {
-                resolve(result);
-            }).catch((error) => {
-                console.log(error);
-                reject(error);
-            });
-        })
-    }
+  static async createNew(product) {
+    const result = await Products.create(product);
+    return result;
+  }
 
-  static deleteOne(id) {
-    return new Promise((resolve, reject) => {
-      Products.findByIdAndDelete(id).then((result) => {
-        resolve(result);
-      }).catch((error) => {
-        console.log(error);
-        reject(error);
-      })
-    })
+  static async deleteOne(id) {
+    const result = await Products.findByIdAndDelete(id);
+    return result;
   }
 
 
-  static update(id, newFields) {
-    return new Promise((resolve, reject) => {
-      Products.findOneAndUpdate({ _id: id }, newFields).then((results) => {
-        resolve(results);
-      }).catch((error) => {
-        console.log(error);
-        reject(error);
-      });
-    });
+  static async update(id, newFields) {
+    const result = await Products.findOneAndUpdate({ _id: id }, newFields);
+    return result;
   }
-
 
   
-  static findProduct(id) {
-    return new Promise((resolve, reject) => {
-      Products.findById( id ).then((result) => {
-        resolve(result);
-      }).catch((error) => {
-        console.log(error);
-        reject(error);
-      });
-    });
+  static async findProduct(id) {
+    const result = await Products.findById( id );
+    return result;
   }
-
 
 }
 

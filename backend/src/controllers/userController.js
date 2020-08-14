@@ -13,27 +13,39 @@ module.exports = {
             userDate: req.body.userDate,
         };
 
-        const response = await User.createNew(newUser)
-
-        return res.json(response);
+        try{
+            const response = await User.createNew(newUser)
+            return res.json(response);
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
 
     },
 
 
     // Metodo para listar todos os usuários do sistema 
     async index(req,res){
-        const users = await User.getAll()
-
-        return res.json(users);
+        try{
+            const users = await User.getAll()
+            return res.json(users);
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
     },
 
     //Metodo para deletar um usuario especifico do sistema
     async delete(req,res){
         const id = req.body.id;
         
-        const response = User.deleteOne(id)
-    
-        res.json(response)
+        try{
+            const response = User.deleteOne(id)
+            res.json(response)
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
     },
     
     async update(req,res){
@@ -41,9 +53,13 @@ module.exports = {
 
         const newFields = req.body.newFields
 
-        const response = await User.update(id, newFields)
-        
-        return res.json(response)
+        try{
+            const response = await User.update(id, newFields)
+            return res.json(response)
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
     },
 
     
