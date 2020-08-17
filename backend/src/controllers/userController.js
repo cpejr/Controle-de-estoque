@@ -1,4 +1,5 @@
-const User = require('../models/user')
+const User = require('../models/user');
+const FirebaseModel = require('../models/FirebaseModel');
 
 module.exports = {
     
@@ -6,7 +7,6 @@ module.exports = {
     async create(req, res){
 
         const newUser = {
-            firebaseId: req.body.firebaseId,
             userName: req.body.userName,
             userType: req.body.userType,
             userCPF: req.body.userCPF,
@@ -14,6 +14,8 @@ module.exports = {
         };
 
         try{
+            const firebaseUid = await FirebaseModel.createNewUser(req.body.email, req.body.password);
+            newUser.firebaseId = firebaseUid;
             const response = await User.createNew(newUser)
             return res.json(response);
         }

@@ -3,6 +3,7 @@ const productController = require('./controllers/productController');
 const userController = require('./controllers/userController');
 const storageChangeRecordController = require('./controllers/storageChangeRecordController');
 const reloadController = require('./controllers/reloadControler')
+const SessionController = require('./controllers/SessionController')
 const routes = express.Router();
 
 routes.get('/productManagement', productController.index);
@@ -23,5 +24,7 @@ routes.get('/recordManagement', storageChangeRecordController.cancelledHistory);
 routes.post('/recordManagement', storageChangeRecordController.retrieve);
 routes.delete('/recordManagement', storageChangeRecordController.delete);
 
+//Session
+routes.post('/login', SessionController.login);
 
 module.exports = routes;
