@@ -81,6 +81,10 @@ const styles = {
         overflow: 'auto',
     },
 
+    amountField: {
+        width: '15%',
+    },
+
     buttonRemove: {
         borderRadius: '50px',
         margin: '0% 0% 0% 5%',

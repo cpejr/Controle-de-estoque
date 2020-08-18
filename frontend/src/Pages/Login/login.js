@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import styles from './loginStyle';
-import { Typography, Button} from '@material-ui/core';
+import {Typography, Button} from '@material-ui/core';
+import {useHistory} from 'react-router-dom'
+import {isMobile} from "../../isMobile";
 
 
 export default function Login() {
@@ -40,12 +42,15 @@ export default function Login() {
  }*/
     const [userName, setUserName] = useState();
     const [userPassword, setPassword] = useState('Adm');
+
     function handleSubmit() {
         alert(`Usuário ${userName} logado com sucesso com a senha ${userPassword}`)
     }
 
-        return (
-            <div style={styles.container}>
+    const history = useHistory();
+    return (
+        <div style={styles.container}>
+            <div style={styles.formContainer}>
                 <div style={styles.logo}>
                     <img alt="Logo" src='./Logo.png' style={{height: "80%", width: 'auto'}}/>
                 </div>
@@ -54,7 +59,9 @@ export default function Login() {
                     type='text'
                     placeholder='USUÁRIO'
                     style={styles.inputField}
-                    onChange={(e)=>{setUserName(e.target.value)}}
+                    onChange={(e) => {
+                        setUserName(e.target.value)
+                    }}
 
                 />
 
@@ -62,14 +69,23 @@ export default function Login() {
                     type='password'
                     placeholder='SENHA'
                     style={styles.inputField}
-                    onChange={(e)=>{setPassword(e.target.value)}}
+                    onChange={(e) => {
+                        setPassword(e.target.value)
+                    }}
                 />
 
-                <Button style={styles.buttonLogin} onClick={handleSubmit}>LOGIN</Button>
+                {isMobile && <Button style={styles.buttonLogin} onClick={handleSubmit}>LOGIN</Button>}
+                {isMobile && <Button style={styles.buttonEsqueciSenha} onClick={() => {
+                    history.push('/esqueciMinhaSenha')
+                }}>ESQUECI MINHA SENHA</Button>}
+                {!isMobile && <Button style={styles.buttonEsqueciSenha} onClick={()=>{history.push('/esqueciMinhaSenha')}}>ESQUECI MINHA SENHA</Button>}
+                {!isMobile && <Button style={styles.buttonLogin} onClick={handleSubmit}>LOGIN</Button>}
+
 
 
             </div>
+        </div>
 
-        )
+    )
 
 }

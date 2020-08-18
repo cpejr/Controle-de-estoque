@@ -118,6 +118,7 @@ export default function Produto(props){
                             type='number'
                             variant='outlined'
                             label="Quantidade"
+                            style={styles.amountField}
                             InputProps={{inputProps: {min: 0, max: props.product.amount}}}
                             onChange={(e) => {handleAmountRemove(e.target.value)}}
                         />
@@ -127,7 +128,13 @@ export default function Produto(props){
                     </div>
                 </DialogActions>
             </Dialog>
-            {openConfirmacao && (<Confirmacao open={openConfirmacao} onClose={handleCloseConfirmacao} amount={amountRemove} product={props.product}/>)}
+            {openConfirmacao &&
+            <Confirmacao
+                open={openConfirmacao}
+                onClose={handleCloseConfirmacao}
+                amount={amountRemove}
+                product={props.product}
+            />}
         </div>
     )
 

@@ -22,13 +22,13 @@ const styles = {
         justifyContent: 'center',
     },
 
-    button: {
-        borderRadius: '5%',
+    buttonConfirmar: {
+        borderRadius: '50px',
         //margin: '5% 10% 5% 10%',
         padding:'0%',
         backgroundColor: azulPadrao,
         //height: '40%',
-        //width: '15%',
+        width: '35%',
         fontSize: fontSizePadrao,
         fontFamily: fontPadrao,
         color: brancoPadrao,
@@ -36,13 +36,23 @@ const styles = {
         //disabled: true
     },
 
+    buttonCancelar: {
+        borderRadius: '50px',
+        //margin: '5% 10% 5% 10%',
+        padding:'0%',
+        backgroundColor: '#B4B4B4',
+        //height: '40%',
+        width: '35%',
+        fontSize: fontSizePadrao,
+        fontFamily: fontPadrao,
+        color: azulPadrao,
+        alignItems: 'center',
+    },
+
     actions: {
         alignItems: 'center',
         justifyContent: 'center',
         display: 'flex',
-       // margin: '5% 10% 5% 10%',
-        //padding:'0%',
-    }
-
+    },
 };
 export default styles;

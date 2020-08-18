@@ -11,12 +11,14 @@ import Usuario from './Pages/Usuario';
 import NovoUsuario from './Pages/NovoUsuario';
 import ListaDeCompras from './Pages/ListaDeCompras'
 import Ajuda from './Pages/Ajuda';
+import EsqueciSenha from "./Pages/EsqueciSenha/esqueciSenha";
 
 export default function Routes(){
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Login} />
+                <Route path="/esqueciMinhaSenha" exact component={EsqueciSenha} />
                 <Fragment>
                     <Header/>
                     <div style={{display: "flex", minHeight: '85%'}}>

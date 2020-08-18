@@ -11,7 +11,9 @@ import {useMediaQuery} from "@material-ui/core";
 
 
 export default function Confirmacao(props) {
-
+    const remover = () => {
+        alert('Foi removido ' + props.amount + ' ' + props.product.productName);
+    };
     return (
         <div>
             <Dialog
@@ -25,11 +27,11 @@ export default function Confirmacao(props) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions style={styles.actions}>
-                    <Button onClick={props.onClose} style={styles.button}>
-                        Confirmo
-                    </Button>
-                    <Button onClick={props.onClose} style={styles.button} autoFocus>
+                    <Button onClick={props.onClose} style={styles.buttonCancelar} autoFocus>
                         Cancelar
+                    </Button>
+                    <Button onClick={remover} style={styles.buttonConfirmar}>
+                        Confirmar
                     </Button>
                 </DialogActions>
             </Dialog>

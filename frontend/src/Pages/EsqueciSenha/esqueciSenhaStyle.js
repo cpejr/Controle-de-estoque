@@ -1,8 +1,7 @@
-import {isMobile} from "../../isMobile";
 import {azulPadrao, fontCinzaEscuro, brancoPadrao, fontPadrao, fontSizePadrao} from '../../StylePadrao/stylePadrao'
-
+import {isMobile} from "../../isMobile";
 const styles = {
-    container: {
+    container:{
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
@@ -12,7 +11,7 @@ const styles = {
     },
     formContainer: {
         height: '100%',
-        width: isMobile ? '50%' : '25%',
+        width: isMobile ? '60%' : '25%',
         justifyContent: 'center',
         alignItems: 'center',
         //backgroundColor: azulPadrao,
@@ -20,14 +19,14 @@ const styles = {
         display: 'flex'
     },
     logo: {
-        marginBottom: '2%',
+        marginBottom:'1%',
         height: '15%',
     },
 
     inputField: {
         borderRadius: '50px',
         // marginLeft: '10%',
-        marginBottom: isMobile ? '10%' : '7%',
+        marginBottom: isMobile ? '15%' : '7%',
         border: '1px solid #707070',
         backgroundColor: brancoPadrao,
         height: '10%',
@@ -39,37 +38,24 @@ const styles = {
         alignItems: 'center'
     },
 
-    typoDiv: {
+    typoDiv:{
         marginBottom: '1%',
         width: '25%',
     },
 
-    typoStyle: {
+    typoStyle:{
         color: brancoPadrao,
         fontFamily: fontPadrao,
         fontSize: '120%',
-        alignItems: "left"
+        alignItems:"left"
     },
 
-    buttonEsqueciSenha: {
-        textDecoration: "underline",
-        fontFamily: "DM Sans, sans-serif",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        lineHeight: "26px",
-        textAlign: "left",
-        color: "#FFFFFF",
-        padding: '0',
-        alignSelf: isMobile ? '' : 'start',
-        display: 'flex',
-        marginTop: isMobile ? '20%' : '',
-    },
     buttonLogin: {
         borderRadius: '50px',
         marginTop: '8%',
         backgroundColor: brancoPadrao,
         height: '7%',
-        width: '50%',
+        width: isMobile ? '70%' : '50%',
         fontSize: fontSizePadrao,
         fontFamily: fontPadrao,
         color: azulPadrao,
