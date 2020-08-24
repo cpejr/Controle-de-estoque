@@ -5,10 +5,14 @@ const storageChangeRecordController = require('./controllers/storageChangeRecord
 const reloadController = require('./controllers/reloadControler')
 const routes = express.Router();
 
+const { celebrate } = require("celebrate");
+
+const productValidator = require("./validators/productValidator");
+
 routes.get('/productManagement', productController.index);
-routes.post('/productManagement', productController.create);
-routes.delete('/productManagement', productController.delete);
-routes.put('/productManagement', productController.editProduct);
+routes.post('/productManagement', celebrate(productValidator.create), productController.create);
+routes.delete('/productManagement', celebrate(productValidator.delete), productController.delete);
+routes.put('/productManagement', celebrate(productValidator.editProduct), productController.editProduct);
 
 routes.get('/reload', reloadController.allReloads);
 routes.post('/reload', reloadController.createReload);
