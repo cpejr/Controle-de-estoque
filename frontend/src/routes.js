@@ -12,6 +12,7 @@ import NovoUsuario from './Pages/NovoUsuario';
 import ListaDeCompras from './Pages/ListaDeCompras'
 import Ajuda from './Pages/Ajuda';
 import EsqueciSenha from "./Pages/EsqueciSenha/esqueciSenha";
+import NovoProduto from './Pages/NovoProduto';
 
 export default function Routes(){
     return (
@@ -23,7 +24,7 @@ export default function Routes(){
                     <Header/>
                     <div style={{display: "flex", minHeight: '85%'}}>
                         <SideBar/>
-                        <div style={{minWidth: '84%', backgroundColor: '#EBEAE9'}}>
+                        <div style={{minWidth: '85%', backgroundColor: '#EBEAE9'}}>
                             <Route path="/perfil" component={Usuario} />
                             <Route path="/listaDeprodutos" component={ListaDeProdutos} />
                             <Route path="/produto" component={Produto} />
@@ -32,6 +33,7 @@ export default function Routes(){
                             <Route path="/novoUsuario" component={NovoUsuario} />
                             <Route path="/listaDeCompras" component={ListaDeCompras} />
                             <Route path="/ajuda" component={Ajuda} />
+                            <Route path="/NovoProduto" component={NovoProduto}/>
                         </div>
                     </div>
                 </Fragment>
