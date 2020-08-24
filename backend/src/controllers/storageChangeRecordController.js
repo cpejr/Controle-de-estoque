@@ -6,7 +6,7 @@ module.exports = {
     //o que será criado e editado por nós. Especificos dessa edicao. 
     async retrieve(req, res) {
         try{
-            const product = await Products.findProduct(req.body.product._id)
+            const product = await Products.findProduct(req.body.productId)
 
             if (product.amount>=req.body.amount){
                 const responseUpdate = await Products.update(product._id, {
