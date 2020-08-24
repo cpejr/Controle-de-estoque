@@ -5,7 +5,7 @@ const styles = {
         backgroundColor: '#043741',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100vw'
+        width: '100%'
     }
 };
 export default styles;
