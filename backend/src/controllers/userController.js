@@ -1,4 +1,5 @@
-const User = require('../models/user')
+const User = require('../models/user');
+const FirebaseModel = require('../models/firebase');
 
 module.exports = {
     
@@ -6,7 +7,6 @@ module.exports = {
     async create(req, res){
 
         const newUser = {
-            firebaseId: req.body.firebaseId,
             userName: req.body.userName,
             userType: req.body.userType,
             userCPF: req.body.userCPF,
@@ -14,6 +14,8 @@ module.exports = {
         };
 
         try{
+            const firebaseUid = await (await FirebaseModel.createNewUser(req.body.email, req.body.password)).user.uid;
+            newUser.firebaseId = firebaseUid;
             const response = await User.createNew(newUser)
             return res.json(response);
         }
@@ -40,8 +42,9 @@ module.exports = {
         const id = req.body.id;
         
         try{
-            const response = User.deleteOne(id)
-            res.json(response)
+            const deletedUser = User.deleteOne(id)
+            const responseFirebase = FirebaseModel.deleteUser(deletedUser.firebaseId)
+            res.json(responseFirebase)
         }
         catch (error) {
             res.status(500).json({ error: error });
@@ -62,5 +65,33 @@ module.exports = {
         }
     },
 
-    
+    async changePassword(req, res){
+        const id = req.body.id
+
+        try {
+            const user = User.findUser(id)
+            const response = FirebaseModel.changeUserPassword(user.firebaseId, req.body.newPassword)
+            return res.json(response)
+        }
+        catch(error){
+            res.status(500).json({ error: error });
+        }
+    },
+
+    async forgotPassword(req, res){
+        const email = req.body.email;
+        
+        try {
+            const response = FirebaseModel.forgot(email);
+            return res.json(response);
+        }
+        catch(error){
+            res.status(500).json({ error: error });
+        }
+    }
+
 };
+
+
+
+
