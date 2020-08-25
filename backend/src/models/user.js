@@ -54,7 +54,7 @@ class UsersActions {
   }
 
   static async getUserByUid(firebaseId) {
-    const result = await Users.find({firebaseId: firebaseId})
+    const result = await Users.findOne({firebaseId: firebaseId});
     return result;
   }
 

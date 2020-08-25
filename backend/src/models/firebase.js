@@ -34,6 +34,6 @@ module.exports = {
   async login (email, password) {
     const result = firebase.auth().signInWithEmailAndPassword(email, password);
     return result;
-  }
+  },
 
 };
