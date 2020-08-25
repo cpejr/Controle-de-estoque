@@ -6,15 +6,16 @@ const userController = require('./controllers/userController');
 const userValidator = require('./validators/userValidator')
 
 const productController = require('./controllers/productController');
-const storageChangeRecordController = require('./controllers/storageChangeRecordController');
-const reloadController = require('./controllers/reloadControler');
-const SessionController = require('./controllers/SessionController');
-
-
-
-const { celebrate } = require("celebrate");
-
 const productValidator = require("./validators/productValidator");
+
+const storageChangeRecordValidator = require('./validators/storageChangeRecordValidator');
+const storageChangeRecordController = require('./controllers/storageChangeRecordController');
+
+const reloadValidator = require('./validators/reloadValidator');
+const reloadController = require('./controllers/reloadControler');
+
+const SessionController = require('./controllers/SessionController')
+
 
 routes.get('/productManagement', productController.index);
 routes.post('/productManagement', celebrate(productValidator.create), productController.create);
@@ -23,7 +24,7 @@ routes.put('/productManagement', celebrate(productValidator.editProduct), produc
 
 //Reload
 routes.get('/reload', reloadController.allReloads);
-routes.post('/reload', reloadController.createReload);
+routes.post('/reload',celebrate(reloadValidator.createReload), reloadController.createReload);
 
 //User
 routes.post('/userManagement', celebrate(userValidator.create), userController.create);
@@ -33,11 +34,12 @@ routes.put('/userManagement', celebrate(userValidator.update), userController.up
 routes.put('/changePassword', userController.changePassword);
 routes.post('/forgotPassword', userController.forgotPassword);
 
-//Records
+
+//STORAGE CHANGE RECORD
 routes.get('/recordManagement', storageChangeRecordController.history);
 routes.get('/recordManagement', storageChangeRecordController.cancelledHistory);
-routes.post('/recordManagement', storageChangeRecordController.retrieve);
-routes.delete('/recordManagement', storageChangeRecordController.delete);
+routes.post('/recordManagement',celebrate(storageChangeRecordValidator.retrieve), storageChangeRecordController.retrieve);
+routes.delete('/recordManagement',celebrate(storageChangeRecordValidator.delete) , storageChangeRecordController.delete);
 
 //Session
 routes.post('/login', SessionController.login);
