@@ -22,18 +22,13 @@ module.exports = {
   },
 
   async deleteUser(uid) {
-    const result = firebase.auth().deleteUser(uid);
+    const result = firebase.auth().findUserById(uid).delete();
     return result;
-  }, 
+  },
 
   async changeUserPassword(uid, newPassword) {
     const result = firebase.auth().updateUser(uid, {password: newPassword})
     return result
-  },
-
-  async changeUserEmail(uid, newEmail) {
-    const result = firebase.auth().updateUser(uid, {email: newEmail})
-    return result;
   },
 
   async login (email, password) {

@@ -14,7 +14,7 @@ module.exports = {
         };
 
         try{
-            const firebaseUid = await FirebaseModel.createNewUser(req.body.email, req.body.password);
+            const firebaseUid = await (await FirebaseModel.createNewUser(req.body.email, req.body.password)).user.uid;
             newUser.firebaseId = firebaseUid;
             const response = await User.createNew(newUser)
             return res.json(response);
@@ -76,6 +76,22 @@ module.exports = {
         catch(error){
             res.status(500).json({ error: error });
         }
+    },
+
+    async forgotPassword(req, res){
+        const email = req.body.email;
+        
+        try {
+            const response = FirebaseModel.forgot(email);
+            return res.json(response);
+        }
+        catch(error){
+            res.status(500).json({ error: error });
+        }
     }
 
 };
+
+
+
+
