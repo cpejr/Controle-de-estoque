@@ -3,6 +3,7 @@ import styles from './loginStyle';
 import {Typography, Button} from '@material-ui/core';
 import {useHistory} from 'react-router-dom'
 import {isMobile} from "../../isMobile";
+import { login, user } from '../../Services/auth';
 
 
 export default function Login() {
@@ -42,12 +43,19 @@ export default function Login() {
  }*/
     const [userName, setUserName] = useState();
     const [userPassword, setPassword] = useState('Adm');
+    const history = useHistory();
 
-    function handleSubmit() {
-        alert(`Usuário ${userName} logado com sucesso com a senha ${userPassword}`)
+    async function handleSubmit() {
+        if(user.name === userName && user.password === userPassword){
+            await login(userName);
+            history.push('/listaDeprodutos');
+        }
+        else{
+            alert("dados incorretos");
+        }
+        // alert(`Usuário ${userName} logado com sucesso com a senha ${userPassword}`)
     }
 
-    const history = useHistory();
     return (
         <div style={styles.container}>
             <div style={styles.formContainer}>

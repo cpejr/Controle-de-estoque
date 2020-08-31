@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 import styles from './UsuarioStyle';
 import { IconContext } from "react-icons";
 import { FaUser, FaLock } from "react-icons/fa";
 import { Typography } from '@material-ui/core';
+import { logout } from '../../Services/auth';
 
 export default function Usuario(props){
     const [user, setUser] = useState()
@@ -13,7 +15,8 @@ export default function Usuario(props){
         else if (props.location.state.calledRoute === 'usuario'){
             return false
         }
-    })
+    });
+    const history = useHistory();
 
     useEffect(()=>{
 
@@ -31,7 +34,9 @@ export default function Usuario(props){
 
 
     function handleSubmit() {
-        alert(`Usuário ${user.userName} deslogado com sucesso`)
+        // alert(`Usuário ${user.userName} deslogado com sucesso`);
+        logout();
+        history.push('/');
     }
 
     return(
