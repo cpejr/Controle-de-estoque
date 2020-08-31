@@ -39,14 +39,24 @@ module.exports = {
 
     //Metodo para deletar um usuario especifico do sistema
     async delete(req,res){
-        const id = req.body.id;
         
         try{
-            const deletedUser = User.deleteOne(id)
-            const responseFirebase = FirebaseModel.deleteUser(deletedUser.firebaseId)
+            const id = req.body.id;
+            let responseFirebase;
+            const user = await User.findUser(id);
+            
+         try{   
+           responseFirebase = await FirebaseModel.deleteUser(user.firebaseId)
+        } catch (error) {
+            
+            res.status(500).json({ error: error });
+        }
+            
+            const deletedUser = await User.deleteOne(id)
             res.json(responseFirebase)
         }
         catch (error) {
+            console.log(error)
             res.status(500).json({ error: error });
         }
     },

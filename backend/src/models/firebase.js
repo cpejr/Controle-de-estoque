@@ -1,6 +1,10 @@
 const firebase = require("firebase/app");
 
+var admin = require('firebase-admin');
+
 require("firebase/auth");
+
+const serviceAccount = require("../../serviceAccountKey.json");
 
 var firebaseConfig = {
   apiKey: process.env.FIREBASE_APIKEY,
@@ -14,6 +18,11 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://controle-de-estoque-d06a3a.firebaseio.com'
+})
+
 module.exports = {
 
   async createNewUser(email, password) {
@@ -22,7 +31,7 @@ module.exports = {
   },
 
   async deleteUser(uid) {
-    const result = firebase.auth().findUserById(uid).delete();
+    const result = admin.auth().deleteUser(uid);
     return result;
   },
 
