@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Login from './Pages/Login'
 import SideBar from './SideBar';
@@ -13,6 +13,20 @@ import ListaDeCompras from './Pages/ListaDeCompras'
 import Ajuda from './Pages/Ajuda';
 import EsqueciSenha from "./Pages/EsqueciSenha/esqueciSenha";
 import NovoProduto from './Pages/NovoProduto';
+import { isAuthenticated } from './Services/auth';
+
+const PrivateRoute = ({component: Component, ...rest}) => (
+    <Route
+        {...rest}
+        render = {props => 
+            isAuthenticated() ? (
+                <Component {...props}/>
+            ):(
+                <Redirect to={{pathname: "/", state: {from: props.location}}}/>
+            )
+        }
+    />
+);
 
 export default function Routes(){
     return (
@@ -25,15 +39,15 @@ export default function Routes(){
                     <div style={{display: "flex", minHeight: '85%'}}>
                         <SideBar/>
                         <div style={{minWidth: '85%', backgroundColor: '#EBEAE9'}}>
-                            <Route path="/perfil" component={Usuario} />
-                            <Route path="/listaDeprodutos" component={ListaDeProdutos} />
-                            <Route path="/produto" component={Produto} />
-                            <Route path="/ListaDeUsuarios" component={ListaDeUsuarios} />
-                            <Route path="/usuario" component={Usuario} />
-                            <Route path="/novoUsuario" component={NovoUsuario} />
-                            <Route path="/listaDeCompras" component={ListaDeCompras} />
-                            <Route path="/ajuda" component={Ajuda} />
-                            <Route path="/NovoProduto" component={NovoProduto}/>
+                            <PrivateRoute path="/perfil" component={Usuario} />
+                            <PrivateRoute path="/listaDeprodutos" component={ListaDeProdutos} />
+                            <PrivateRoute path="/produto" component={Produto} />
+                            <PrivateRoute path="/ListaDeUsuarios" component={ListaDeUsuarios} />
+                            <PrivateRoute path="/usuario" component={Usuario} />
+                            <PrivateRoute path="/novoUsuario" component={NovoUsuario} />
+                            <PrivateRoute path="/listaDeCompras" component={ListaDeCompras} />
+                            <PrivateRoute path="/ajuda" component={Ajuda} />
+                            <PrivateRoute path="/NovoProduto" component={NovoProduto}/>
                         </div>
                     </div>
                 </Fragment>
