@@ -50,6 +50,12 @@ class UsersActions {
   static async findUser(id) {
     const result = await Users.findById(id);
     return result;
+
+  }
+
+  static async getUserByUid(firebaseId) {
+    const result = await Users.findOne({firebaseId: firebaseId});
+    return result;
   }
 
 }
