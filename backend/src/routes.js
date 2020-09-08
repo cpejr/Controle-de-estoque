@@ -32,9 +32,11 @@ routes.post('/reload',acessToken.authenticateToken, celebrate(reloadValidator.cr
 //User
 routes.post('/userManagement/employee', acessToken.authenticateToken, acessToken.isAdmOrManager, celebrate(userValidator.create), userController.create);
 routes.post('/userManagement/manager', acessToken.authenticateToken, acessToken.isAdm, celebrate(userValidator.create), userController.create);
+routes.post('/userManagement/adm', acessToken.authenticateToken, acessToken.isAdm, celebrate(userValidator.create), userController.create);
 routes.get('/userManagement', acessToken.authenticateToken, userController.index);
 routes.delete('/userManagement/employee', acessToken.authenticateToken, acessToken.isAdmOrManager, celebrate(userValidator.delete), userController.delete);
 routes.delete('/userManagement/manager', acessToken.authenticateToken, acessToken.isAdm, celebrate(userValidator.delete), userController.delete);
+routes.delete('/userManagement/adm', acessToken.authenticateToken, acessToken.isAdm, celebrate(userValidator.delete), userController.delete);
 routes.put('/userManagement', acessToken.authenticateToken, celebrate(userValidator.update), userController.update);
 routes.put('/changePassword', acessToken.authenticateToken, userController.changePassword);
 routes.post('/forgotPassword', acessToken.authenticateToken, userController.forgotPassword);
