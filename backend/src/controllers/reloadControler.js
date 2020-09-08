@@ -20,7 +20,7 @@ module.exports = {
     async allReloads(req, res){
         try{
             const response = await ReloadDB.getAll()
-            res.json(response)
+            res.json({results: response})
         }
         catch(error){
             res.status(500).json({ error: error });

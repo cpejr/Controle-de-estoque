@@ -30,7 +30,7 @@ module.exports = {
     async index(req,res){
         try{
             const users = await User.getAll()
-            return res.json(users);
+            return res.json({results: users});
         }
         catch (error) {
             res.status(500).json({ error: error });
