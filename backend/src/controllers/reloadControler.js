@@ -13,14 +13,14 @@ module.exports = {
             res.json(finalResponse)
         }
         catch(error){
-            res.status(500).json({ error: error });
+            res.status(500).status(200).json({ error: error });
         }
     },
 
     async allReloads(req, res){
         try{
             const response = await ReloadDB.getAll()
-            res.json({results: response})
+            res.status(200).json({results: response})
         }
         catch(error){
             res.status(500).json({ error: error });

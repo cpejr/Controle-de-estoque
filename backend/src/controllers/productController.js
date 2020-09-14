@@ -20,7 +20,7 @@ module.exports = {
             return res.json( response );
         }
         catch (error){
-            res.status(500).json({ error: error });
+            res.status(500).status(200).json({ error: error });
         }
 
     },
@@ -28,10 +28,10 @@ module.exports = {
     async index(req, res){
         try {
             const allProducts = await products.getAll()
-            return res.json(allProducts);
+            return res.json({results: allProducts});
         }
         catch (error) {
-            res.status(500).json({ error: error });
+            res.status(500).status(200).json({ error: error });
         }
     },
 
@@ -43,7 +43,7 @@ module.exports = {
             return res.json(result)
         }
         catch (error) {
-            res.status(500).json({ error: error });
+            res.status(500).status(200).json({ error: error });
         }
     },
 
@@ -58,7 +58,7 @@ module.exports = {
             return res.json(response)
         }
         catch (error) {
-            res.status(500).json({ error: error });
+            res.status(500).status(200).json({ error: error });
         }
     },
 

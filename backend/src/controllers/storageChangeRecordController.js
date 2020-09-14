@@ -23,7 +23,7 @@ module.exports = {
         
                 const responseCreateNewRecord = await StorageChangeRecord.createNew(newRecord)
         
-                res.json(responseCreateNewRecord)
+                res.status(200).json(responseCreateNewRecord)
             }
             else{
                 res.status(500).json({ error: 'Não há essa quantidade de produtos em estoque' });
@@ -40,7 +40,7 @@ module.exports = {
     async history(req, res) {
         try{
             const history = await StorageChangeRecord.getAll()
-            return res.json(history);
+            return res.status(200).json({results: history});
         }
         catch(error){
             res.status(500).json({ error: error });
@@ -51,7 +51,7 @@ module.exports = {
         try{
             const id = req.body.id;
             const response = await StorageChangeRecord.cancel(id);
-            res.json(response)
+            res.status(200).json(response)
         }
         catch(error){
             res.status(500).json({ error: error });
@@ -62,7 +62,7 @@ module.exports = {
     async cancelledHistory(req, res){
         try{
             const response = await StorageChangeRecord.allCancelled();
-            res.json(response)
+            res.status(200).json(response)
         }
         catch(error){
             res.status(500).json({ error: error });

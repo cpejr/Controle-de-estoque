@@ -17,7 +17,7 @@ module.exports = {
             const firebaseUid = await (await FirebaseModel.createNewUser(req.body.email, req.body.password)).user.uid;
             newUser.firebaseId = firebaseUid;
             const response = await User.createNew(newUser)
-            return res.json(response);
+            return res.status(200).json(response);
         }
         catch (error) {
             res.status(500).json({ error: error });
@@ -30,7 +30,7 @@ module.exports = {
     async index(req,res){
         try{
             const users = await User.getAll()
-            return res.json({results: users});
+            return res.status(200).json({results: users});
         }
         catch (error) {
             res.status(500).json({ error: error });
@@ -53,7 +53,7 @@ module.exports = {
         }
             
             const deletedUser = await User.deleteOne(id)
-            res.json(responseFirebase)
+            res.status(200).json(responseFirebase)
         }
         catch (error) {
             console.log(error)
@@ -68,7 +68,7 @@ module.exports = {
 
         try{
             const response = await User.update(id, newFields)
-            return res.json(response)
+            return res.status(200).json(response)
         }
         catch (error) {
             res.status(500).json({ error: error });
@@ -81,7 +81,7 @@ module.exports = {
         try {
             const user = User.findUser(id)
             const response = FirebaseModel.changeUserPassword(user.firebaseId, req.body.newPassword)
-            return res.json(response)
+            return res.status(200).json(response)
         }
         catch(error){
             res.status(500).json({ error: error });
@@ -93,7 +93,7 @@ module.exports = {
         
         try {
             const response = FirebaseModel.forgot(email);
-            return res.json(response);
+            return res.status(200).json(response);
         }
         catch(error){
             res.status(500).json({ error: error });
